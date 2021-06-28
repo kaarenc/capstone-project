@@ -47,7 +47,7 @@ function fit_register_custom_post_types() {
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-groups',
-        'supports'           => array( 'title', 'editor', 'thumbnail' ),
+        'supports'           => array( 'title', 'thumbnail' ),
     );
 
     register_post_type( 'fit-staff', $args );
@@ -96,7 +96,7 @@ function fit_register_custom_post_types() {
         'hierarchical'       => false,
         'menu_position'      => 5,
         'menu_icon'          => 'dashicons-format-status',
-        'supports'           => array( 'title', 'editor', 'thumbnail' ),
+        'supports'           => array( 'title' ),
     );
 
     register_post_type( 'fit-testimonial', $args );
