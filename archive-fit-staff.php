@@ -47,9 +47,26 @@ get_header();
 							the_field('team_member_bio');	
 						}
 
-						if ( get_field( 'team_member_classes' ) ) {
-							the_field('team_member_classes');	
-						}
+						$team_member_classes = get_field('team_member_classes');
+
+						if( $team_member_classes ) : ?>
+						<h2>Classes Taught:</h2>
+							<ul>
+							<?php foreach( $team_member_classes as $post ) : 
+
+								setup_postdata( $post ); ?>
+
+								<li>
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								</li>
+
+							<?php endforeach; ?>
+							</ul>
+							<?php 
+
+							wp_reset_postdata(); ?>
+						<?php endif; 
+						
 					endif;
 
 				endwhile;
