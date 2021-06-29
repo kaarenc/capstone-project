@@ -12,9 +12,19 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
+
+			<nav id = "footer-navigation" class="footer-navigation">
+				<?php
+				wp_nav_menu(array('theme_location' => 'footer'));
+		
+				?>
+			</nav>
+			
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'fwd-fitness' ) ); ?>">
 				<?php
+
+				
 				/* translators: %s: CMS name, i.e. WordPress. */
 				printf( esc_html__( 'Proudly powered by %s', 'fwd-fitness' ), 'WordPress' );
 				?>
