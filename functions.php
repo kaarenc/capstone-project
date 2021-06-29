@@ -189,3 +189,34 @@ if ( class_exists( 'WooCommerce' ) ) {
 * Custom Post Types & Taxonomies
 */
 require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+
+//excerpt length
+
+function fwd_fitness_excerpt_length($length) {
+	if(get_post_type(205)){
+		return 100;
+	}else{
+		return $length;
+	}
+}
+
+
+add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
+
+
+add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
+
+
+//Edit the Read More Link
+
+function fwd_fitness_excerpt_more($more){
+	$more = '... <a class="read-more" href="'. get_permalink(). '">Continue Reading</a>';
+	return $more;
+}
+add_filter('excerpt_more', 'fwd_fitness_excerpt_more');
+
+//get rid of except on archive page
+
+
+
