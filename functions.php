@@ -51,6 +51,7 @@ if ( ! function_exists( 'fwd_fitness_setup' ) ) :
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__( 'Primary', 'fwd-fitness' ),
+				'footer' => esc_html__( 'Footer Menu', 'fwd-fitness' ),
 			)
 		);
 
