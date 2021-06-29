@@ -33,20 +33,26 @@
 
 	<div class="entry-content">
 		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'fwd-fitness' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
+		// the_content(
+		// 	sprintf(
+		// 		wp_kses(
+		// 			/* translators: %s: Name of current post. Only visible to screen readers */
+		// 			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'fwd-fitness' ),
+		// 			array(
+		// 				'span' => array(
+		// 					'class' => array(),
+		// 				),
+		// 			)
+		// 		),
+		// 		wp_kses_post( get_the_title() )
+		// 	)
+		// );
+		
+		if ( is_single()) {
+			the_content();
+		}else{
+		the_excerpt();
+		}
 
 		wp_link_pages(
 			array(
