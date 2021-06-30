@@ -227,12 +227,15 @@ function fwd_fitness_excerpt_length($length) {
 		return $length;
 	}
 }
+add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
 
+
+// removing "Archive:" from archive pages
 
 add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
 
 
-add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
+
 
 
 //Edit the Read More Link
@@ -359,200 +362,10 @@ HTML;
 }
 
 
-// Enqueue Swiper on the Homepage
-if (is_front_page()) {
-	wp_enqueue_style(
-		'swiper-styles',
-		get_template_directory_uri() . '/css/swiper-bundle.css',
-		array(),
-		'6.6.1'
-	);
-	wp_enqueue_script(
-		'swiper-scripts',
-		get_template_directory_uri() . '/js/swiper-bundle.min.js',
-		array(),
-		'6.6.1',
-		true
-	);
-	wp_enqueue_script(
-		'swiper-settings',
-		get_template_directory_uri() . '/js/swiper-setting.js',
-		array('swiper-scripts'),
-		_S_VERSION,
-		true
-	);
-}
 
 
 
 
-
-
-// ----------------------------------------------------------------
-// PRODUCTS FUNCTIONS
-// ----------------------------------------------------------------
-
-// remove zoom on product images
-
-function remove_image_zoom_support() {
-    remove_theme_support( 'wc-product-gallery-zoom' );
-}
-add_action( 'wp', 'remove_image_zoom_support', 100 );
-
-// move price field
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 70 );
-
-// remove meta data of product
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-
-// remove additional information field
-remove_action( 'woocommerce_product_additional_information', 'wc_display_product_attributes', 10 );
-
-
-
-add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
-
-function remove_product_tabs( $tabs ) {
-
-  unset( $tabs['additional_information'] );
-
-  return $tabs;
-
-}
-
-
-// remove quantity box
-
-function custom_remove_all_quantity_fields( $return, $product ) {return true;}
-add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
-
-
-
-// remove description tab
-add_filter( 'woocommerce_product_tabs', 'sd_remove_product_tabs', 98 );
-function sd_remove_product_tabs( $tabs ) {
-    unset( $tabs['description'] );
-    return $tabs;
-}
-
-
-// add ACF to products
-
-
-// add description field
-add_action( 'woocommerce_single_product_summary', 'custom_description_field', 15 );
-  
-function custom_description_field() { ?>
- 
-<?php 
-
-if(get_field('service_description')) { ?>
-	<div class="service-description"><?php the_field('service_description'); ?></div>	
-<?php }
-
-}
-
-// remove product short description from product page
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-
-
-// add CTA field
-add_action( 'woocommerce_after_single_product_summary', 'custom_cta_field', 3 );
-  
-function custom_cta_field() { ?>
- 
-<?php 
-
- 
-$contact = get_field('services_call_to_action');
-
-
-if($contact) { 
-$contact_url = $contact['url'];
-?>
-
-<a class="call-to-action" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a>
-<?php }
-
-}
-
-
-
-// add instructors field
-
-add_action( 'woocommerce_before_single_product_summary', 'custom_instructor_field', 70 );
-  
-function custom_instructor_field() { ?>
- 
-<?php 
-
-$service_instructor = get_field('instructors');
-
-if( $service_instructor ) { ?>
-
-<?php
-
-if( $service_instructor ): ?>
-	<h3>Instructors:</h3>
-    <ul>
-    <?php foreach( $service_instructor as $instructor ): 
-        $permalink = get_post_type_archive_link('fit-staff');
-        $title = get_the_title( $instructor->ID );
-        $custom_field = get_field( 'instructor', $instructor->ID );
-        ?>
-    
-			
-			<li><a href="<?php echo $permalink ?>"><?php echo esc_html( $title ); ?></a></li>
-        
-    <?php endforeach; ?>
-    </ul>
-
-
-<?php endif; ?>
-
-	
-<?php }
-
-}
-
-// add link to products archive page
-
-add_action( 'woocommerce_single_product_summary', 'link_to_services', 15 );
-  
-function link_to_services() { ?>
-
-<?php 
-$permalink = get_permalink( wc_get_page_id( 'shop' ));
-?>
-<a href="<?php echo $permalink ?>">Check out our other services </a>
-<?php
-
-
-}
-
-
-// --------------------------------------------
-// Shop edits
-// --------------------------------------------
-
-
-function excerpt_in_product_archives() {
-      
-    the_excerpt();
-}
-
-
-add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
-
-// change select options text to more info
-add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
-	global $product;
-	if ( $product->is_type( 'variable' ) ) {
-		$text = $product->is_purchasable() ? __( 'More Info', 'woocommerce' ) : __( 'More Info', 'woocommerce' );
-	}
-	return $text;
-}, 10 );
 
 
 
