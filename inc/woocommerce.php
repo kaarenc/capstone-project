@@ -388,10 +388,10 @@ function excerpt_in_product_archives() {
 add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
 
 // change select options text to more info
-add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
-	global $product;
-	if ( $product->is_type( 'variable' ) ) {
-		$text = $product->is_purchasable() ? __( 'More Info', 'woocommerce' ) : __( 'More Info', 'woocommerce' );
-	}
-	return $text;
-}, 10 );
+
+add_filter( 'woocommerce_page_title', 'custom_woocommerce_page_title');
+function custom_woocommerce_page_title( $page_title ) {
+  if( $page_title == 'Services' ) {
+    return "Services";
+  }
+}
