@@ -178,7 +178,7 @@ get_header();
 						<div class="swiper-wrapper">
 							<?php while ($query->have_posts()) : $query->the_post(); ?>
 								<div class="swiper-slide">
-									<?php the_content(); ?>
+									<?php the_field('testimonial_content'); ?>
 								</div>
 							<?php endwhile; ?>
 						</div>
@@ -192,23 +192,7 @@ get_header();
 		endif;
 		?>
 
-
-
-			<!-- not sure if the code below is needed -->
-			<?php
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;?>
-			<!-- not sure if the code above is needed -->
-			<?php
-
-
-
-
-
+		<?php
 
 		endwhile; // End of the loop.
 		?>
