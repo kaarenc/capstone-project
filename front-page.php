@@ -145,9 +145,19 @@ get_header();
 				<?php endif; ?>
 			</div>
 
+
+			<!-- Output the instagram grid -->
 			<?php
 			if ( get_field('instagram') ) {
 				echo do_shortcode( get_field('instagram') );
+			}		
+
+			?>
+
+			<!-- Output the testimonial slider -->
+			<?php
+			if ( get_field('testimonials') ) {
+				echo do_shortcode( get_field('testimonials') );
 			}		
 
 			?>
