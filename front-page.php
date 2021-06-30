@@ -162,6 +162,37 @@ get_header();
 
 			?>
 
+			<!-- Output the custom testimonial slider -->
+			<?php
+			$args = array(
+				'post_type'      => 'fit-testimonial',
+				'posts_per_page' => -1
+			);
+
+			$query = new WP_Query($args);
+
+			if ($query->have_posts()) : ?>
+				<section class="home-slider">
+					<h2>Testimonials</h2>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<?php while ($query->have_posts()) : $query->the_post(); ?>
+								<div class="swiper-slide">
+									<?php the_content(); ?>
+								</div>
+							<?php endwhile; ?>
+						</div>
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</section>
+		<?php
+			wp_reset_postdata();
+		endif;
+		?>
+
+
 
 			<!-- not sure if the code below is needed -->
 			<?php
