@@ -245,6 +245,316 @@ add_filter('excerpt_more', 'fwd_fitness_excerpt_more');
 
 //get rid of except on archive page
 
+//Customizing the login page
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png);
+            height: 65px;
+            width: 65px;
+            background-size: 65px 65px;
+            padding-bottom: 10px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+function my_login_logo_url() {
+    return home_url('https://fitness.bcitwebdeveloper.ca/');
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+function my_login_logo_url_title() {
+    return 'FWD Fitness';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+function my_login_styles() { ?>
+    <style type="text/css">
+        body.login {
+            background-color: #284B63;  
+        }
+        body.login label {
+            font-size: 1rem;
+        }
+        body.login div#login form#loginform {
+            background-color: #F8F8F9;
+        }
+        body.login div#login form#loginform p.submit input#wp-submit {
+            background-color: #284B63;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_styles' );
+
+add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
+function my_custom_dashboard_widgets() {
+global $wp_meta_boxes;
+wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard_help');
+}
+function custom_dashboard_help() {
+echo '<p>Welcome to BCIT Fitness Support! Need help? Contact us at <a href="mailto:yourusername@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
+}
+
+
+
+// -----------------------------------------------------
+// Home Page Widgets
+// -----------------------------------------------------
+add_action('wp_dashboard_setup', 'wpse_46445_dashboard_widget');
+/*
+ * Builds the Custom Dashboard Widget
+ *
+ */
+function wpse_46445_dashboard_widget()
+{
+    $the_widget_title = 'Site Tutorials';
+    wp_add_dashboard_widget('dashboard_tutorials_widget', $the_widget_title, 'wpse_46445_add_widget_content');
+}
+/*
+ * Prints the Custom Dashboard Widget content
+ *
+ */
+function wpse_46445_add_widget_content() 
+{
+    $tutorial_1 = wpse_46445_make_youtube_thumb_link(
+        array(
+            'id'=>'s-c_urzTWYQ', 
+            'color'=>'#FF6645', 
+            'title' => 'Video Tutorial', 
+            'button' => 'Watch now'
+        )
+    );
+    $tutorial_2 = wpse_46445_make_youtube_thumb_link(
+        array(
+            'id'=>'HIq9kkHbMCA', 
+            'color'=>'#FF6645', 
+            'title' => 'Video Tutorial', 
+            'button' => 'Watch Now'
+        )
+    );
+    $html = <<<HTML
+    <h4 style="text-align:center">How to render videos for web using YouTube horsepower</h4>
+    {$tutorial_1}
+    <hr />
+    <h4 style="text-align:center">How to render videos for web using YouTube horsepower</h4>
+    {$tutorial_2}
+HTML;
+    echo $html;
+}
+/*
+ * Makes a thumbnail with YouTube official image file 
+ * the video links opens the video in the "watch_popup" mode (video fills full browser window)
+ * 
+ */
+function wpse_46445_make_youtube_thumb_link($atts, $content = null) 
+{
+    $img   = "http://i3.ytimg.com/vi/{$atts['id']}/default.jpg";
+    $yt    = "http://www.youtube.com/watch_popup?v={$atts['id']}";
+    $color = ($atts['color'] && $atts['color'] != '') ? ';color:' . $atts['color'] : '';
+    $html  = <<<HTML
+        <div class="poptube" style="text-align:center;margin-bottom:40px">
+        <h2 class="poptube" style="text-shadow:none;padding:0px{$color}">{$atts['title']}</h2>
+        <a href="{$yt}" target="_blank"><img class="poptube" src="{$img}" style="margin-bottom:-19px"/></a><br />
+        <a class="poptube button-secondary" href="{$yt}" target="_blank">{$atts['button']}</a></div>
+HTML;
+    return $html;
+}
+
+
+// Enqueue Swiper on the Homepage
+if (is_front_page()) {
+	wp_enqueue_style(
+		'swiper-styles',
+		get_template_directory_uri() . '/css/swiper-bundle.css',
+		array(),
+		'6.6.1'
+	);
+	wp_enqueue_script(
+		'swiper-scripts',
+		get_template_directory_uri() . '/js/swiper-bundle.min.js',
+		array(),
+		'6.6.1',
+		true
+	);
+	wp_enqueue_script(
+		'swiper-settings',
+		get_template_directory_uri() . '/js/swiper-setting.js',
+		array('swiper-scripts'),
+		_S_VERSION,
+		true
+	);
+}
+
+
+
+
+
+
+// ----------------------------------------------------------------
+// PRODUCTS FUNCTIONS
+// ----------------------------------------------------------------
+
+// remove zoom on product images
+
+function remove_image_zoom_support() {
+    remove_theme_support( 'wc-product-gallery-zoom' );
+}
+add_action( 'wp', 'remove_image_zoom_support', 100 );
+
+// move price field
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 70 );
+
+// remove meta data of product
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
+// remove additional information field
+remove_action( 'woocommerce_product_additional_information', 'wc_display_product_attributes', 10 );
+
+
+
+add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
+
+function remove_product_tabs( $tabs ) {
+
+  unset( $tabs['additional_information'] );
+
+  return $tabs;
+
+}
+
+
+// remove quantity box
+
+function custom_remove_all_quantity_fields( $return, $product ) {return true;}
+add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
+
+
+
+// remove description tab
+add_filter( 'woocommerce_product_tabs', 'sd_remove_product_tabs', 98 );
+function sd_remove_product_tabs( $tabs ) {
+    unset( $tabs['description'] );
+    return $tabs;
+}
+
+
+// add ACF to products
+
+
+// add description field
+add_action( 'woocommerce_single_product_summary', 'custom_description_field', 15 );
+  
+function custom_description_field() { ?>
+ 
+<?php 
+
+if(get_field('service_description')) { ?>
+	<div class="service-description"><?php the_field('service_description'); ?></div>	
+<?php }
+
+}
+
+// remove product short description from product page
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+
+// add CTA field
+add_action( 'woocommerce_after_single_product_summary', 'custom_cta_field', 3 );
+  
+function custom_cta_field() { ?>
+ 
+<?php 
+
+ 
+$contact = get_field('services_call_to_action');
+
+
+if($contact) { 
+$contact_url = $contact['url'];
+?>
+
+<a class="call-to-action" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a>
+<?php }
+
+}
+
+
+
+// add instructors field
+
+add_action( 'woocommerce_before_single_product_summary', 'custom_instructor_field', 70 );
+  
+function custom_instructor_field() { ?>
+ 
+<?php 
+
+$service_instructor = get_field('instructors');
+
+if( $service_instructor ) { ?>
+
+<?php
+
+if( $service_instructor ): ?>
+	<h3>Instructors:</h3>
+    <ul>
+    <?php foreach( $service_instructor as $instructor ): 
+        $permalink = get_post_type_archive_link('fit-staff');
+        $title = get_the_title( $instructor->ID );
+        $custom_field = get_field( 'instructor', $instructor->ID );
+        ?>
+    
+			
+			<li><a href="<?php echo $permalink ?>"><?php echo esc_html( $title ); ?></a></li>
+        
+    <?php endforeach; ?>
+    </ul>
+
+
+<?php endif; ?>
+
+	
+<?php }
+
+}
+
+// add link to products archive page
+
+add_action( 'woocommerce_single_product_summary', 'link_to_services', 15 );
+  
+function link_to_services() { ?>
+
+<?php 
+$permalink = get_permalink( wc_get_page_id( 'shop' ));
+?>
+<a href="<?php echo $permalink ?>">Check out our other services </a>
+<?php
+
+
+}
+
+
+// --------------------------------------------
+// Shop edits
+// --------------------------------------------
+
+
+function excerpt_in_product_archives() {
+      
+    the_excerpt();
+}
+
+
+add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
+
+// change select options text to more info
+add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
+	global $product;
+	if ( $product->is_type( 'variable' ) ) {
+		$text = $product->is_purchasable() ? __( 'More Info', 'woocommerce' ) : __( 'More Info', 'woocommerce' );
+	}
+	return $text;
+}, 10 );
+
+
 
 //Customizing the login page
 function my_login_logo() { ?>
