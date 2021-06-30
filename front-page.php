@@ -96,11 +96,11 @@ get_header();
 						// Setup this post for WP functions (variable must be named $post).
 						setup_postdata($post); ?>
 						<!-- <li> -->
-							<a href="<?php the_permalink(); ?>">
-								<?php the_title(); ?>
-								<!-- change size of photo here?? -->
-								<?php the_post_thumbnail(''); ?>
-							</a>
+							
+							<?php the_title(); ?>
+							<!-- change size of photo here?? -->
+							<?php the_post_thumbnail(''); ?>
+							
 						<!-- </li> -->
 					<?php endforeach; ?>
 					<!-- </ul> -->
@@ -109,6 +109,13 @@ get_header();
 					// Reset the global post object so that the rest of the page works correctly.
 					wp_reset_postdata(); ?>
 				<?php endif; ?>
+
+				<div class="button">
+					<!-- output the call to action link--shop -->
+					<!-- ask jonathin about this!! -->
+					<a href="<?php the_field('all_team_members'); ?>">View all Team Members</a>
+				</div>
+
 			</section>
 
 			<div class="button">
