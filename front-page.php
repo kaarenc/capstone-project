@@ -44,6 +44,7 @@ get_header();
 								<?php the_post_thumbnail(''); ?>
 							</a>
 							
+							
 						
 					<?php endforeach; ?>
 					</div>
