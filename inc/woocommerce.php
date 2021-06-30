@@ -290,7 +290,7 @@ function custom_description_field() { ?>
 <?php 
 
 if(get_field('service_description')) { ?>
-	<div class="service-description"><?php the_field('service_description'); ?></div>	
+	<p class="service-description"><?php the_field('service_description'); ?></p>
 <?php }
 
 }

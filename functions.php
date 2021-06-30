@@ -227,12 +227,15 @@ function fwd_fitness_excerpt_length($length) {
 		return $length;
 	}
 }
+add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
 
+
+// removing "Archive:" from archive pages
 
 add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
 
 
-add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
+
 
 
 //Edit the Read More Link
@@ -358,30 +361,6 @@ HTML;
     return $html;
 }
 
-
-// Enqueue Swiper on the Homepage
-if (is_front_page()) {
-	wp_enqueue_style(
-		'swiper-styles',
-		get_template_directory_uri() . '/css/swiper-bundle.css',
-		array(),
-		'6.6.1'
-	);
-	wp_enqueue_script(
-		'swiper-scripts',
-		get_template_directory_uri() . '/js/swiper-bundle.min.js',
-		array(),
-		'6.6.1',
-		true
-	);
-	wp_enqueue_script(
-		'swiper-settings',
-		get_template_directory_uri() . '/js/swiper-setting.js',
-		array('swiper-scripts'),
-		_S_VERSION,
-		true
-	);
-}
 
 
 
