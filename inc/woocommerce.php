@@ -288,7 +288,7 @@ add_action( 'woocommerce_single_product_summary', 'custom_description_field', 15
 function custom_description_field() { ?>
  
 <?php 
-if(function_exists('get_field()')){
+if(function_exists('get_field')){
 
 
 if(get_field('service_description')) { ?>
@@ -311,7 +311,7 @@ function custom_cta_field() { ?>
  
 $contact = get_field('services_call_to_action');
 
-if(function_exists('get_field()')){
+if(function_exists('get_field')){
 
 
 if($contact) { 
@@ -335,7 +335,7 @@ function custom_instructor_field() { ?>
 
 $service_instructor = get_field('instructors');
 
-if(function_exists('get_field()')){
+if(function_exists('get_field')){
 if( $service_instructor ) { ?>
 
 <?php
