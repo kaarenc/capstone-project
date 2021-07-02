@@ -35,48 +35,52 @@ get_header();
 				while ( $query -> have_posts() ) :
 					$query -> the_post(); ?>
 
-					<article><?php
+					<article>
+					
+						<?php 
+						if ( function_exists ( 'get_field' ) ) : ?>
 
-					if ( function_exists ( 'get_field' ) ) : ?>
-
-						<h2><?php the_title(); ?></h2> <?php
-
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail();	
-						}
-						
-						if ( get_field( 'specialization_and_title' ) ) { ?>
-							<h3><?php the_field('specialization_and_title'); ?></h3>	
-						} <?php
-						
-						if ( get_field( 'team_member_bio' ) ) { ?>
-							<p><?php the_field('team_member_bio'); ?></p>	
-						} <?php
-						
-						$team_member_classes = get_field('team_member_classes');
-
-						if( $team_member_classes ) : ?>
-						<h3>Classes Taught:</h3>
-							<ul>
-							<?php foreach( $team_member_classes as $post ) : 
-
-								setup_postdata( $post ); ?>
-
-								<li>
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-								</li>
-
-							<?php endforeach; ?>
-							</ul>
+							<h2><?php the_title(); ?></h2> 
 							
-						</article>
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail();	
+							}
+							?>
+							
+							<?php if ( get_field( 'specialization_and_title' ) ) : ?>
+								<h3><?php the_field('specialization_and_title'); ?></h3>	
+							<?php endif; ?>
+							
+							<?php if ( get_field( 'team_member_bio' ) ) : ?>
+								<p><?php the_field('team_member_bio'); ?></p>	
+							<?php endif; ?> 
+							
+							<?php
+							$team_member_classes = get_field('team_member_classes');
 
-						<?php
-							wp_reset_postdata(); ?>
-						<?php endif; 
-						
-					endif;
+							if( $team_member_classes ) : ?>
+							<h3>Classes Taught:</h3>
+								<ul>
+								<?php foreach( $team_member_classes as $post ) : 
 
+									setup_postdata( $post ); ?>
+
+									<li>
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+									</li>
+
+								<?php endforeach;
+								wp_reset_postdata(); ?>
+								</ul>
+								
+							<?php endif; 
+							
+						endif; ?>
+								
+					</article>
+
+				<?php
 				endwhile;
 				wp_reset_postdata();
 
