@@ -309,11 +309,11 @@ function custom_cta_field() { ?>
 <?php 
 
  
-$contact = get_field('services_call_to_action');
+
 
 if(function_exists('get_field')){
 
-
+$contact = get_field('services_call_to_action');
 if($contact) { 
 $contact_url = $contact['url'];
 ?>
@@ -332,10 +332,10 @@ add_action( 'woocommerce_before_single_product_summary', 'custom_instructor_fiel
 function custom_instructor_field() { ?>
  
 <?php 
-
+if(function_exists('get_field')){
 $service_instructor = get_field('instructors');
 
-if(function_exists('get_field')){
+
 if( $service_instructor ) { ?>
 
 <?php
