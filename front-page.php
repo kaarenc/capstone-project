@@ -224,26 +224,29 @@ get_header();
 
 			$query = new WP_Query($args);
 
-			if ($query->have_posts()) : ?>
-				<section class="home-slider">
-					<h2>Success Stories</h2>
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-							<?php while ($query->have_posts()) : $query->the_post(); ?>
-								<div class="swiper-slide">
-									<h3><?php the_title()?></h3>
-									<?php the_field('testimonial_content'); ?>
-									<p><?php the_field('author') ?></p>
-								</div>
-							<?php endwhile; ?>
+			if(function_exists('get_field')):
+
+				if ($query->have_posts()) : ?>
+					<section class="home-slider">
+						<h2>Success Stories</h2>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<?php while ($query->have_posts()) : $query->the_post(); ?>
+									<div class="swiper-slide">
+										<h3><?php the_title()?></h3>
+										<?php the_field('testimonial_content'); ?>
+										<p><?php the_field('author') ?></p>
+									</div>
+								<?php endwhile; ?>
+							</div>
+							<div class="swiper-pagination"></div>
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
 						</div>
-						<div class="swiper-pagination"></div>
-						<div class="swiper-button-prev"></div>
-						<div class="swiper-button-next"></div>
-					</div>
-				</section>
-		<?php
-			wp_reset_postdata();
+					</section>
+			<?php
+				wp_reset_postdata();
+			endif;
 		endif;
 		?>
 
