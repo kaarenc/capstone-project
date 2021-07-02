@@ -23,7 +23,10 @@ get_header();
 
 			if ( function_exists ( 'get_field' ) ) :
 
-				echo '<h2>Contact Us</h2>';
+                echo '<h2>Contact Us</h2>';
+                
+                echo do_shortcode('[wpforms id="94"]');
+                    
 
 				if ( get_field( 'phone_number' ) ) {
 					echo '<h3>';
@@ -43,19 +46,21 @@ get_header();
 					echo '</div>';
 				}
 
-				if (get_field('instagram')) :
-					echo do_shortcode(get_field('instagram'));
-				endif;
-        
-			endif;
 				
+                    echo do_shortcode('[instagram-feed user="bcitfitness"]');
+                    
+                    
+                    
+                    if ( is_active_sidebar( 'custom-map-widget' )) { ?>
+                         <div id="contact-map-area" class="cmw-widget-area widget-area" role="complementary">
+                         <?php dynamic_sidebar( 'custom-map-widget' ); ?>
+                         </div>
+        <?php
+	}
+endif;
 
 			get_template_part( 'template-parts/content', 'page' );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
 
 		endwhile; // End of the loop.
 		?>
@@ -63,5 +68,5 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
+
 get_footer();
