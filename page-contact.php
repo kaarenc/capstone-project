@@ -21,6 +21,35 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
+			if ( function_exists ( 'get_field' ) ) :
+
+				echo '<h2>Contact Us</h2>';
+
+				if ( get_field( 'phone_number' ) ) {
+					echo '<h3>';
+						the_field('phone_number');
+					echo '</h3>';	
+				}
+				
+				if ( get_field( 'email_address' ) ) {
+					echo '<h3>';
+						the_field('email_address');	
+					echo '</h3>';
+				}
+
+				if ( get_field( 'address' ) ) {
+					echo '<div>';
+						the_field('address');	
+					echo '</div>';
+				}
+
+				if (get_field('instagram')) :
+					echo do_shortcode(get_field('instagram'));
+				endif;
+        
+			endif;
+				
+
 			get_template_part( 'template-parts/content', 'page' );
 
 			// If comments are open or we have at least one comment, load up the comment template.
