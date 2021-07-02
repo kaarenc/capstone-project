@@ -24,32 +24,48 @@ get_header();
 		<section class="home-intro">
 				<!-- Home ACF -->
 				<!-- Output the intro message -->
-				<p><?php the_field('intro_message');?></p>
+				<?php
+				if( function_exists('get_field')):?>
+				
+					<p><?php the_field('intro_message');?></p>
+
+				<?php 
+				endif;
+				?>
+				
+				
 		</section>
 
 			<!-- Output the featured services -->
 			<section class="featured-services">
-				<?php
-				$featured_posts = get_field('featured_services');	
-				if( $featured_posts ): ?>
-					<h2>Featured Services</h2>
-					<article>
-						<?php foreach( $featured_posts as $post ): 
 
-							// Setup this post for WP functions (variable must be named $post).
-							setup_postdata($post); ?>
-								
-								<a href="<?php the_permalink(); ?>">
-									<h3><?php the_title(); ?></h3>
-									<!-- change size of photo here?? -->
-									<?php the_post_thumbnail(''); ?>
-								</a>
-						<?php endforeach; ?>
-					</article>
-					<?php 
-					// Reset the global post object so that the rest of the page works correctly.
-					wp_reset_postdata(); ?>
-				<?php endif; ?>
+				<?php
+				if(function_exists('get_field')):
+				
+					$featured_posts = get_field('featured_services');	
+					if( $featured_posts ): ?>
+						<h2>Featured Services</h2>
+						<article>
+							<?php foreach( $featured_posts as $post ): 
+	
+								// Setup this post for WP functions (variable must be named $post).
+								setup_postdata($post); ?>
+									
+									<a href="<?php the_permalink(); ?>">
+										<h3><?php the_title(); ?></h3>
+										<!-- change size of photo here?? -->
+										<?php the_post_thumbnail(''); ?>
+									</a>
+							<?php endforeach; ?>
+						</article>
+						<?php 
+						// Reset the global post object so that the rest of the page works correctly.
+						wp_reset_postdata(); ?>
+					<?php endif; 
+
+				endif;
+
+				?>
 			</section>
 
 
@@ -57,68 +73,80 @@ get_header();
 			<section class="featured-blog">
 				<!-- Output the featured blog posts -->
 				<?php
-				$featured_posts = get_field('featured_blog_posts');
-				if( $featured_posts ): ?>
 
-				<h2>Featured Blog Posts</h2>
+				if(function_exists('get_field')):
+				
+					$featured_posts = get_field('featured_blog_posts');
+					if( $featured_posts ): ?>
 
-					<article>
-					<?php foreach( $featured_posts as $post ): 
-						// Setup this post for WP functions (variable must be named $post).
-						setup_postdata($post); ?>
-							<a href="<?php the_permalink(); ?>">
-								<h3><?php the_title(); ?></h3>
-								<!-- change size of photo here?? -->
-								<?php the_post_thumbnail(''); ?>
-							</a>
-					<?php endforeach; ?>
-					</article>
-					<?php 
-					// Reset the global post object so that the rest of the page works correctly.
-					wp_reset_postdata(); ?>
-				<?php endif; ?>
+					<h2>Featured Blog Posts</h2>
+
+						<article>
+						<?php foreach( $featured_posts as $post ): 
+							// Setup this post for WP functions (variable must be named $post).
+							setup_postdata($post); ?>
+								<a href="<?php the_permalink(); ?>">
+									<h3><?php the_title(); ?></h3>
+									<!-- change size of photo here?? -->
+									<?php the_post_thumbnail(''); ?>
+								</a>
+						<?php endforeach; ?>
+						</article>
+						<?php 
+						// Reset the global post object so that the rest of the page works correctly.
+						wp_reset_postdata(); ?>
+					<?php endif;
+					endif;
+					?>
 			</section>
 
 
 			<section class="team-members">
 				<!-- Output the featured blog posts -->
 				<?php
-				$featured_posts = get_field('team_members');
-				if( $featured_posts ): ?>
-				<h2>Team Members</h2>
-					<article>
-					<?php foreach( $featured_posts as $post ): 
-						// Setup this post for WP functions (variable must be named $post).
-						setup_postdata($post); ?>
 
-							<h3>
-								<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
-							</h3>
-							<!-- change size of photo here?? -->
-							<?php the_post_thumbnail(''); ?>
+				if(function_exists('get_field')):
+					$featured_posts = get_field('team_members');
+					if( $featured_posts ): ?>
+					<h2>Team Members</h2>
+						<article>
+						<?php foreach( $featured_posts as $post ): 
+							// Setup this post for WP functions (variable must be named $post).
+							setup_postdata($post); ?>
 
-					<?php endforeach; ?>
+								<h3>
+									<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
+								</h3>
+								<!-- change size of photo here?? -->
+								<?php the_post_thumbnail(''); ?>
 
-					</article>
-					<?php 
-					// Reset the global post object so that the rest of the page works correctly.
-					wp_reset_postdata(); ?>
-				<?php endif; ?>
+						<?php endforeach; ?>
+
+						</article>
+						<?php 
+						// Reset the global post object so that the rest of the page works correctly.
+						wp_reset_postdata(); ?>
+					<?php endif;
+				endif;
+				 ?>
 
 
 				<?php 
-				$team_members = get_field('all_team_members');
+				if(function_exists('get_field')):
+					$team_members = get_field('all_team_members');
 
-				if( $team_members):?>
+					if( $team_members):?>
 
-					<div class="button">
-						<!-- output the call to action link--shop -->
-						<!-- ask jonathin about this!! -->
-						<a href="<?php the_field('all_team_members'); ?>">View all Team Members</a>
-					</div>
+						<div class="button">
+							<!-- output the call to action link--shop -->
+							<!-- ask jonathin about this!! -->
+							<a href="<?php the_field('all_team_members'); ?>">View all Team Members</a>
+						</div>
 
-				<?php
+					<?php
+					endif;
 				endif;
+				
 				?>
 
 				
@@ -126,6 +154,7 @@ get_header();
 			</section>
 
 			<?php 
+			if(function_exists('get_field')):
 				$button = get_field('call_to_action_shop');
 
 				if( $button ):?>
@@ -146,40 +175,43 @@ get_header();
 
 				<?php
 				endif;
+			endif;
+				
 				?>
 
 			
 
 				<?php 
+				if(function_exists('get_field')):
 
-				$button = get_field('call_to_action_contact');
+					$button = get_field('call_to_action_contact');
 
-				if( $button ):?>
+					if( $button ):?>
 
-					<div class="button">
-						<!-- output the call to action link--contact -->
-						<?php 
-						$link = get_field('call_to_action_contact');
-						if( $link ): 
-							$link_url = $link['url'];
-							$link_title = $link['title'];
-							$link_target = $link['target'] ? $link['target'] : '_self';
-							?>
-							<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-						<?php endif; ?>
-					</div>
+						<div class="button">
+							<!-- output the call to action link--contact -->
+							<?php 
+							$link = get_field('call_to_action_contact');
+							if( $link ): 
+								$link_url = $link['url'];
+								$link_title = $link['title'];
+								$link_target = $link['target'] ? $link['target'] : '_self';
+								?>
+								<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+							<?php endif; ?>
+						</div>
 
 
-				<?php
+					<?php
+					endif;
 				endif;
+				
 				?>
 	
 
 			<!-- Output the instagram grid -->
-			<?php
-			if ( get_field('instagram') ) :
-				echo do_shortcode( get_field('instagram') );
-			endif;	
+			<?php	
+			 echo do_shortcode('[instagram-feed user="bcitfitness"]');
 			?>
 
 
@@ -223,5 +255,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
