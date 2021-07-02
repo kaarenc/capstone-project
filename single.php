@@ -13,18 +13,7 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
-
-			if ( function_exists( 'get_field' ) ) {
-								
-				if ( get_field( 'blog_link' ) ) {
-
-					?>
-					<a href="<?php the_field('blog_link'); ?> "> Services</a>
-					<?php
-
-				}
-
-			}
+			
 		while ( have_posts() ) :
 			the_post();
 

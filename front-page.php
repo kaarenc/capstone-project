@@ -91,7 +91,9 @@ get_header();
 						// Setup this post for WP functions (variable must be named $post).
 						setup_postdata($post); ?>
 
-							<h3><?php the_title(); ?></h3>
+							<h3>
+								<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
+							</h3>
 							<!-- change size of photo here?? -->
 							<?php the_post_thumbnail(''); ?>
 
@@ -192,7 +194,7 @@ get_header();
 
 			if ($query->have_posts()) : ?>
 				<section class="home-slider">
-					<h2>Testimonials</h2>
+					<h2>Success Stories</h2>
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
 							<?php while ($query->have_posts()) : $query->the_post(); ?>
