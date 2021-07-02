@@ -33,32 +33,26 @@ get_header();
 			if( $query -> have_posts() ) :
 
 				while ( $query -> have_posts() ) :
-					$query -> the_post(); 
+					$query -> the_post(); ?>
 
-					echo '<article>';
+					<article><?php
 
-					if ( function_exists ( 'get_field' ) ) :
+					if ( function_exists ( 'get_field' ) ) : ?>
 
-						echo '<h2>';
-							the_title();
-						 echo '</h2>';
+						<h2><?php the_title(); ?></h2> <?php
 
 						if ( has_post_thumbnail() ) {
 							the_post_thumbnail();	
 						}
-
-						echo '<h3>';
-						if ( get_field( 'specialization_and_title' ) ) {
-								the_field('specialization_and_title');	
-						}
-						echo '</h3>';
-
-						echo '<p>';
-						if ( get_field( 'team_member_bio' ) ) {
-							the_field('team_member_bio');	
-						}
-						echo '</p>';
-
+						
+						if ( get_field( 'specialization_and_title' ) ) { ?>
+							<h3><?php the_field('specialization_and_title'); ?></h3>	
+						} <?php
+						
+						if ( get_field( 'team_member_bio' ) ) { ?>
+							<p><?php the_field('team_member_bio'); ?></p>	
+						} <?php
+						
 						$team_member_classes = get_field('team_member_classes');
 
 						if( $team_member_classes ) : ?>
@@ -71,13 +65,13 @@ get_header();
 								<li>
 									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</li>
-								
 
 							<?php endforeach; ?>
 							</ul>
-							<?php 
-						echo '</article>';
+							
+						</article>
 
+						<?php
 							wp_reset_postdata(); ?>
 						<?php endif; 
 						
@@ -92,5 +86,4 @@ get_header();
 	</main>
 
 <?php
-get_sidebar();
 get_footer();
