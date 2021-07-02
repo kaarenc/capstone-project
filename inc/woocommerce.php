@@ -288,11 +288,13 @@ add_action( 'woocommerce_single_product_summary', 'custom_description_field', 15
 function custom_description_field() { ?>
  
 <?php 
+if(function_exists('get_field()')){
+
 
 if(get_field('service_description')) { ?>
 	<p class="service-description"><?php the_field('service_description'); ?></p>
 <?php }
-
+}
 }
 
 // remove product short description from product page
@@ -309,6 +311,8 @@ function custom_cta_field() { ?>
  
 $contact = get_field('services_call_to_action');
 
+if(function_exists('get_field()')){
+
 
 if($contact) { 
 $contact_url = $contact['url'];
@@ -317,7 +321,7 @@ $contact_url = $contact['url'];
 <a class="call-to-action" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a>
 <?php }
 
-}
+}}
 
 
 
@@ -331,6 +335,7 @@ function custom_instructor_field() { ?>
 
 $service_instructor = get_field('instructors');
 
+if(function_exists('get_field()')){
 if( $service_instructor ) { ?>
 
 <?php
@@ -355,7 +360,7 @@ if( $service_instructor ): ?>
 
 	
 <?php }
-
+}
 }
 
 // add link to products archive page

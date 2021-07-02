@@ -362,10 +362,49 @@ HTML;
 }
 
 
+// block block editor on contact page
+//changes from the block editor to the classic editor for some pages
+//"removing" the block editor
+function fwd_post_filter( $use_block_editor, $post ) {
+    // Change ID number to your Page ID
+    $page_ids = array( 29 );
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+    }
+}
+add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
 
 
 
 
+// Adding new cutsom widget area for footer
+
+function wpb_widgets_init() {
+ 
+    register_sidebar( array(
+        'name'          => 'Custom Footer Widget Area',
+        'id'            => 'custom-footer-widget',
+        'before_widget' => '<div class="cfw-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="cfw-title">',
+        'after_title'   => '</h2>',
+    ) );
+ 
+// Adding new cutsom widget area for contact page
+
+register_sidebar( array(
+	'name'          => 'Custom Contact Map Widget Area',
+	'id'            => 'custom-map-widget',
+	'before_widget' => '<div class="cmw-widget">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h2 class="cmw-title">',
+	'after_title'   => '</h2>',
+) );
+
+}
+add_action( 'widgets_init', 'wpb_widgets_init' );
 
 
 
