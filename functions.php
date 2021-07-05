@@ -219,7 +219,6 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 
 
 //excerpt length
-
 function fwd_fitness_excerpt_length($length) {
 	if(get_post_type(205)){
 		return 100;
@@ -231,15 +230,10 @@ add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
 
 
 // removing "Archive:" from archive pages
-
 add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
 
 
-
-
-
 //Edit the Read More Link
-
 function fwd_fitness_excerpt_more($more){
 	$more = '... <a class="read-more" href="'. get_permalink(). '">Continue Reading</a>';
 	return $more;
@@ -248,7 +242,9 @@ add_filter('excerpt_more', 'fwd_fitness_excerpt_more');
 
 //get rid of except on archive page
 
+
 //Customizing the login page
+//Logo
 function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
@@ -261,19 +257,28 @@ function my_login_logo() { ?>
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+//Logo URL
 function my_login_logo_url() {
-    return home_url('https://fitness.bcitwebdeveloper.ca/');
+    return home_url();
 }
 add_filter( 'login_headerurl', 'my_login_logo_url' );
+
 function my_login_logo_url_title() {
     return 'FWD Fitness';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+//Styles
 function my_login_styles() { ?>
     <style type="text/css">
         body.login {
             background-color: #284B63;  
+			color: white;
         }
+		body.login div#login p a {
+			color: white;
+		}
         body.login label {
             font-size: 1rem;
         }
@@ -287,6 +292,8 @@ function my_login_styles() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_styles' );
 
+
+// Support Widget on Dashboard
 add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
 function my_custom_dashboard_widgets() {
 global $wp_meta_boxes;
@@ -295,8 +302,6 @@ wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard
 function custom_dashboard_help() {
 echo '<p>Welcome to BCIT Fitness Support! Need help? Contact us at <a href="mailto:yourusername@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
 }
-
-
 
 // -----------------------------------------------------
 // Home Page Widgets
@@ -405,6 +410,3 @@ register_sidebar( array(
 
 }
 add_action( 'widgets_init', 'wpb_widgets_init' );
-
-
-
