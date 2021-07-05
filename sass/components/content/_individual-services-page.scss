@@ -1,0 +1,17 @@
+.woocommerce-product-gallery {
+    width: 100%;
+    // position: fixed;
+    
+    img {
+        width: 100%;
+        // position: absolute;
+        top: 0;
+        z-index: -1;
+        object-fit: cover;
+        max-height: 30rem;
+    }
+
+
+
+}
+
