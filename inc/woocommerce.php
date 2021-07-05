@@ -241,6 +241,15 @@ function remove_image_zoom_support() {
 }
 add_action( 'wp', 'remove_image_zoom_support', 100 );
 
+
+// Move breadcrumbs
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_breadcrumb', 30, 0 );
+
+// Move title
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 40 );
+
 // move price field
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 // add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 70 );
@@ -262,6 +271,7 @@ function remove_product_tabs( $tabs ) {
   return $tabs;
 
 }
+
 
 
 // remove quantity box
@@ -327,7 +337,7 @@ $contact_url = $contact['url'];
 
 // add instructors field
 
-add_action( 'woocommerce_before_single_product_summary', 'custom_instructor_field', 70 );
+add_action( 'woocommerce_single_product_summary', 'custom_instructor_field', 15 );
   
 function custom_instructor_field() { ?>
  
@@ -365,7 +375,7 @@ if( $service_instructor ): ?>
 
 // add link to products archive page
 
-add_action( 'woocommerce_single_product_summary', 'link_to_services', 15 );
+add_action( 'woocommerce_single_product_summary', 'link_to_services', 25 );
   
 function link_to_services() { ?>
 
