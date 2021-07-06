@@ -1,0 +1,13 @@
+.site-header {
+    
+    img {
+        width: 7rem;
+    }
+
+    @media screen and (min-width: 37.5em) {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
