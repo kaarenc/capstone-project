@@ -149,6 +149,32 @@ function fwd_fitness_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	// Enqueue Swiper on the Homepage
+	if (is_front_page()) {
+		wp_enqueue_style(
+			'swiper-styles',
+			get_template_directory_uri() . '/css/swiper-bundle.css',
+			array(),
+			'6.6.1'
+		);
+
+		wp_enqueue_script(
+			'swiper-scripts',
+			get_template_directory_uri() . '/js/swiper-bundle.min.js',
+			array(),
+			'6.6.1',
+			true
+		);
+
+		wp_enqueue_script(
+			'swiper-settings',
+			get_template_directory_uri() . '/js/swiper-setting.js',
+			array('swiper-scripts'),
+			_S_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'fwd_fitness_scripts' );
 
@@ -193,7 +219,6 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 
 
 //excerpt length
-
 function fwd_fitness_excerpt_length($length) {
 	if(get_post_type(205)){
 		return 40;
@@ -201,16 +226,14 @@ function fwd_fitness_excerpt_length($length) {
 		return $length;
 	}
 }
-
-
-add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
-
-
 add_filter('excerpt_length', 'fwd_fitness_excerpt_length', 999);
 
 
-//Edit the Read More Link
+// removing "Archive:" from archive pages
+add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
 
+
+//Edit the Read More Link
 function fwd_fitness_excerpt_more($more){
 	$more = '... <a class="read-more" href="'. get_permalink(). '">Continue Reading</a>';
 	return $more;
@@ -222,21 +245,23 @@ add_filter('excerpt_more', 'fwd_fitness_excerpt_more');
 
 
 //Customizing the login page
+//Logo
 function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png);
-			height: 65px;
-			width: 65px;
-			background-size: 65px 65px;
-        	padding-bottom: 10px;
+            height: 80px;
+            width: 80px;
+            background-size: 80px 80px;
+            padding-bottom: 10px;
         }
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
+//Logo URL
 function my_login_logo_url() {
-    return home_url('https://fitness.bcitwebdeveloper.ca/');
+    return home_url();
 }
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
@@ -245,24 +270,147 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+//Styles
 function my_login_styles() { ?>
     <style type="text/css">
         body.login {
-            background-color: #284B63;	
+            background-color: #F5F5F5;  
+			color: #131315;
         }
-
-		body.login label {
-			font-size: 1rem;
-		}
-
 		body.login div#login form#loginform {
-			background-color: #f8f8f9;
+			background-color: #8CCDF8 !important;
 		}
-
-		body.login div#login form#loginform p.submit input#wp-submit {
-			background-color: #284B63;
+		body.login div#login form#loginform p.submit input#wp-submit{
+			background-color: #131315 !important;
 		}
-
+        body.login label {
+            font-size: 1rem;
+        }
+        body.login div#login form#loginform {
+            background-color: #F8F8F9;
+        }
+        body.login div#login form#loginform p.submit input#wp-submit {
+            background-color: #284B63;
+        }
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_styles' );
+
+
+// Support Widget on Dashboard
+add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
+function my_custom_dashboard_widgets() {
+global $wp_meta_boxes;
+wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard_help');
+}
+function custom_dashboard_help() {
+echo '<p>Welcome to BCIT Fitness Support! Need help? Contact us at <a href="mailto:yourusername@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
+}
+
+// -----------------------------------------------------
+// Home Page Widgets
+// -----------------------------------------------------
+add_action('wp_dashboard_setup', 'wpse_46445_dashboard_widget');
+/*
+ * Builds the Custom Dashboard Widget
+ *
+ */
+function wpse_46445_dashboard_widget()
+{
+    $the_widget_title = 'Site Tutorials';
+    wp_add_dashboard_widget('dashboard_tutorials_widget', $the_widget_title, 'wpse_46445_add_widget_content');
+}
+/*
+ * Prints the Custom Dashboard Widget content
+ *
+ */
+function wpse_46445_add_widget_content() 
+{
+    $tutorial_1 = wpse_46445_make_youtube_thumb_link(
+        array(
+            'id'=>'s-c_urzTWYQ', 
+            'color'=>'#FF6645', 
+            'title' => 'Video Tutorial', 
+            'button' => 'Watch now'
+        )
+    );
+    $tutorial_2 = wpse_46445_make_youtube_thumb_link(
+        array(
+            'id'=>'HIq9kkHbMCA', 
+            'color'=>'#FF6645', 
+            'title' => 'Video Tutorial', 
+            'button' => 'Watch Now'
+        )
+    );
+    $html = <<<HTML
+    <h4 style="text-align:center">How to render videos for web using YouTube horsepower</h4>
+    {$tutorial_1}
+    <hr />
+    <h4 style="text-align:center">How to render videos for web using YouTube horsepower</h4>
+    {$tutorial_2}
+HTML;
+    echo $html;
+}
+/*
+ * Makes a thumbnail with YouTube official image file 
+ * the video links opens the video in the "watch_popup" mode (video fills full browser window)
+ * 
+ */
+function wpse_46445_make_youtube_thumb_link($atts, $content = null) 
+{
+    $img   = "http://i3.ytimg.com/vi/{$atts['id']}/default.jpg";
+    $yt    = "http://www.youtube.com/watch_popup?v={$atts['id']}";
+    $color = ($atts['color'] && $atts['color'] != '') ? ';color:' . $atts['color'] : '';
+    $html  = <<<HTML
+        <div class="poptube" style="text-align:center;margin-bottom:40px">
+        <h2 class="poptube" style="text-shadow:none;padding:0px{$color}">{$atts['title']}</h2>
+        <a href="{$yt}" target="_blank"><img class="poptube" src="{$img}" style="margin-bottom:-19px"/></a><br />
+        <a class="poptube button-secondary" href="{$yt}" target="_blank">{$atts['button']}</a></div>
+HTML;
+    return $html;
+}
+
+
+// block block editor on contact page
+//changes from the block editor to the classic editor for some pages
+//"removing" the block editor
+function fwd_post_filter( $use_block_editor, $post ) {
+    // Change ID number to your Page ID
+    $page_ids = array( 29 );
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+    }
+}
+add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
+
+
+
+
+// Adding new cutsom widget area for footer
+
+function wpb_widgets_init() {
+ 
+    register_sidebar( array(
+        'name'          => 'Custom Footer Widget Area',
+        'id'            => 'custom-footer-widget',
+        'before_widget' => '<div class="cfw-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="cfw-title">',
+        'after_title'   => '</h2>',
+    ) );
+ 
+// Adding new cutsom widget area for contact page
+
+register_sidebar( array(
+	'name'          => 'Custom Contact Map Widget Area',
+	'id'            => 'custom-map-widget',
+	'before_widget' => '<div class="cmw-widget">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h2 class="cmw-title">',
+	'after_title'   => '</h2>',
+) );
+
+}
+add_action( 'widgets_init', 'wpb_widgets_init' );

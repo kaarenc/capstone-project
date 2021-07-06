@@ -14,17 +14,6 @@ get_header();
 
 		<?php
 
-			if ( function_exists( 'get_field' ) ) {
-								
-				if ( get_field( 'blog_title' ) ) {
-				
-					?>
-					<a href="<?php the_field('blog_title'); ?> "> Services</a>
-					<?php
-
-				}
-
-			}
 		while ( have_posts() ) :
 			the_post();
 

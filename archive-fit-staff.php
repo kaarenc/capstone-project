@@ -22,8 +22,10 @@ get_header();
 			<?php
 
 			$args = array(
-				'post_type' => 'fit-staff',
-				'posts_per_page' => -1,
+				'post_type' 		=> 'fit-staff',
+				'posts_per_page' 	=> -1,
+				'order_by'			=> 'title',
+				'order'				=> 'ASC'
 			);
 
 			$query = new WP_Query( $args );
@@ -31,44 +33,54 @@ get_header();
 			if( $query -> have_posts() ) :
 
 				while ( $query -> have_posts() ) :
-					$query -> the_post();
+					$query -> the_post(); ?>
 
-					if ( function_exists ( 'get_field' ) ) :
+					<article>
+					
+						<?php 
+						if ( function_exists ( 'get_field' ) ) : ?>
 
-						if ( has_post_thumbnail() ) {
-							the_post_thumbnail();	
-						}
+							<h2><?php the_title(); ?></h2> 
+							
+							<?php
+							if ( has_post_thumbnail() ) {
+								the_post_thumbnail();	
+							}
+							?>
+							
+							<?php if ( get_field( 'specialization_and_title' ) ) : ?>
+								<h3><?php the_field('specialization_and_title'); ?></h3>	
+							<?php endif; ?>
+							
+							<?php if ( get_field( 'team_member_bio' ) ) : ?>
+								<p><?php the_field('team_member_bio'); ?></p>	
+							<?php endif; ?> 
+							
+							<?php
+							$team_member_classes = get_field('team_member_classes');
 
-						if ( get_field( 'specialization_and_title' ) ) {
-								the_field('specialization_and_title');	
-						}
+							if( $team_member_classes ) : ?>
+							<h3>Classes Taught:</h3>
+								<ul>
+								<?php foreach( $team_member_classes as $post ) : 
 
-						if ( get_field( 'team_member_bio' ) ) {
-							the_field('team_member_bio');	
-						}
+									setup_postdata( $post ); ?>
 
-						$team_member_classes = get_field('team_member_classes');
+									<li>
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+									</li>
 
-						if( $team_member_classes ) : ?>
-						<h2>Classes Taught:</h2>
-							<ul>
-							<?php foreach( $team_member_classes as $post ) : 
+								<?php endforeach;
+								wp_reset_postdata(); ?>
+								</ul>
+								
+							<?php endif; 
+							
+						endif; ?>
+								
+					</article>
 
-								setup_postdata( $post ); ?>
-
-								<li>
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-								</li>
-
-							<?php endforeach; ?>
-							</ul>
-							<?php 
-
-							wp_reset_postdata(); ?>
-						<?php endif; 
-						
-					endif;
-
+				<?php
 				endwhile;
 				wp_reset_postdata();
 
@@ -78,5 +90,4 @@ get_header();
 	</main>
 
 <?php
-get_sidebar();
 get_footer();
