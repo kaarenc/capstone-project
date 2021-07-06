@@ -16,10 +16,10 @@ get_header();
 
 			if ( function_exists( 'get_field' ) ) {
 								
-				if ( get_field( 'blog_link' ) ) {
-
+				if ( get_field( 'blog_title' ) ) {
+				
 					?>
-					<a href="<?php the_field('blog_link'); ?> "> Services</a>
+					<a href="<?php the_field('blog_title'); ?> "> Services</a>
 					<?php
 
 				}
