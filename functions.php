@@ -221,7 +221,7 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 //excerpt length
 function fwd_fitness_excerpt_length($length) {
 	if(get_post_type(205)){
-		return 100;
+		return 40;
 	}else{
 		return $length;
 	}
@@ -238,6 +238,7 @@ function fwd_fitness_excerpt_more($more){
 	$more = '... <a class="read-more" href="'. get_permalink(). '">Continue Reading</a>';
 	return $more;
 }
+
 add_filter('excerpt_more', 'fwd_fitness_excerpt_more');
 
 //get rid of except on archive page
