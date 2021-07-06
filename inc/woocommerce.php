@@ -313,7 +313,7 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 
 
 // add CTA field
-add_action( 'woocommerce_after_single_product_summary', 'custom_cta_field', 3 );
+add_action( 'woocommerce_single_product_summary', 'custom_cta_field', 60 );
   
 function custom_cta_field() { ?>
  
