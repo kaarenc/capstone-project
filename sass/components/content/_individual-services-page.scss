@@ -1,11 +1,19 @@
 .woocommerce-product-gallery {
     width: 100%;
 
-    
-    img {
-     @include hero-img;
-    //  border-top: $dark_blue 5px solid;
-    //  border-bottom: $dark_blue 5px solid;
+    a {
+        margin: 0;
+        padding: 0;
+    }
+    img.wp-post-image {
+        position: relative;
+        width: 100%;
+        top: -1rem;
+        z-index: -1;
+        object-fit: cover;
+        max-height: 30rem;
+        padding: 0;
+        margin: 0;
     }
 
     
@@ -121,15 +129,15 @@
            }
            }
         }
-            .call-to-action {
-                @import contactUs;
-                
-            }
-      
+    
        
     }
 
-        
+                a.call-to-action {
+                border: double $dark_blue 2px;
+                margin: 0 auto;
+    }
+    
         .other-services-button {
             display: flex;
             justify-content: center;
@@ -142,7 +150,7 @@
             color: $color__text-main;
             // background-color: rgb(142, 121, 103);
             margin: 1rem auto;
-            // width: 100%;
+            width: 15rem;
             text-align: center;
      
            

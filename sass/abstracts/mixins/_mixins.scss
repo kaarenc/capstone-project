@@ -14,12 +14,9 @@
 // Hero Image Styling 
 // Make sure you make whatever the is wrapping the image as 100% width as well
 
-@mixin hero-img {
-	width: 100%;
-	top: 0;
-	z-index: -1;
-	object-fit: cover;
-	max-height: 30rem;
+
+
+@mixin servicesButton {
 
 }
 
