@@ -19,6 +19,7 @@ get_header();
 
 	<?php
 			while ( have_posts() ) :
+				the_post_thumbnail(22);
 				the_post(); ?>
 
 		<section class="home-intro">

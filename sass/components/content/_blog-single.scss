@@ -1,0 +1,49 @@
+
+.single .entry-title{
+    text-align:center;
+}
+
+.single .post-thumbnail{
+    float:left;
+   
+}
+
+
+.entry-meta{
+    text-align:center;
+}
+
+.single .entry-content {
+    padding-left: 15px;
+    padding-right: 20px;
+}
+
+@media (min-width: 700px){
+
+.single .post-76{
+    display: grid; 
+    grid-template-columns: 0.1fr 1.7fr 2.2fr; 
+    grid-template-rows: 0.2fr 1.8fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". entry-header entry-header"
+      ". entry-content post-thumbnail"
+      ". entry-content ."; 
+  }
+  .entry-header { grid-area: entry-header; }
+  .entry-content { grid-area: entry-content; }
+  .post-thumbnail { grid-area: post-thumbnail; }
+  
+  
+  .single .wp-post-image{
+    padding-right:20px;
+   
+}
+
+}
+
+
+    
+
+
+

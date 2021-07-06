@@ -18,9 +18,11 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
+
 		get_template_part( 'template-parts/content', 'page' );
 		
 		while ( have_posts() ) :
+
 			the_post();
 
 			if ( function_exists ( 'get_field' ) ) :
@@ -60,6 +62,7 @@ get_header();
 
 				echo '</div>';
 
+
                     
                 if ( is_active_sidebar( 'custom-map-widget' )) : ?>
                 		<div id="contact-map-area" class="cmw-widget-area widget-area" role="complementary">
@@ -68,6 +71,7 @@ get_header();
         			<?php
 				endif;
 			endif;
+
 
 			
 			echo do_shortcode('[instagram-feed user="bcitfitness"]');
