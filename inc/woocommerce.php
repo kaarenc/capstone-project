@@ -248,7 +248,7 @@ add_action( 'woocommerce_before_single_product_summary', 'woocommerce_breadcrumb
 
 // Move title
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_template_single_title', 40 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 10 );
 
 // move price field
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
@@ -302,6 +302,7 @@ if(function_exists('get_field')){
 
 
 if(get_field('service_description')) { ?>
+	<!-- <h2 class="service-description-title">Service Description: </h2> -->
 	<p class="service-description"><?php the_field('service_description'); ?></p>
 <?php }
 }
@@ -351,12 +352,14 @@ if( $service_instructor ) { ?>
 <?php
 
 if( $service_instructor ): ?>
+<div class="instructors">
 	<h3>Instructors:</h3>
     <ul>
     <?php foreach( $service_instructor as $instructor ): 
         $permalink = get_post_type_archive_link('fit-staff');
         $title = get_the_title( $instructor->ID );
-        $custom_field = get_field( 'instructor', $instructor->ID );
+		$custom_field = get_field( 'instructor', $instructor->ID );
+		
         ?>
     
 			
@@ -364,7 +367,7 @@ if( $service_instructor ): ?>
         
     <?php endforeach; ?>
     </ul>
-
+	</div>
 
 <?php endif; ?>
 
@@ -375,14 +378,16 @@ if( $service_instructor ): ?>
 
 // add link to products archive page
 
-add_action( 'woocommerce_single_product_summary', 'link_to_services', 25 );
+add_action( 'woocommerce_single_product_summary', 'link_to_services', 50 );
   
 function link_to_services() { ?>
 
 <?php 
 $permalink = get_permalink( wc_get_page_id( 'shop' ));
 ?>
-<a href="<?php echo $permalink ?>">Check out our other services </a>
+<div class="other-services-button">
+<a class="other-services-link cta-button" href="<?php echo $permalink ?>">Check out our other services </a>
+</div>
 <?php
 
 

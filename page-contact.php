@@ -18,7 +18,11 @@ get_header();
 	<main id="primary" class="site-main">
 
 		<?php
+		
+		get_template_part( 'template-parts/content', 'page' );
+		
 		while ( have_posts() ) :
+
 			the_post();
 
 			if ( function_exists ( 'get_field' ) ) :
@@ -59,7 +63,7 @@ get_header();
 	}
 endif;
 
-			get_template_part( 'template-parts/content', 'page' );
+			
 
 
 		endwhile; // End of the loop.
