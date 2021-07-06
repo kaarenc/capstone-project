@@ -249,9 +249,9 @@ function my_login_logo() { ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png);
-            height: 65px;
-            width: 65px;
-            background-size: 65px 65px;
+            height: 80px;
+            width: 80px;
+            background-size: 80px 80px;
             padding-bottom: 10px;
         }
     </style>
@@ -273,11 +273,14 @@ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 function my_login_styles() { ?>
     <style type="text/css">
         body.login {
-            background-color: #284B63;  
-			color: white;
+            background-color: #F5F5F5;  
+			color: #131315;
         }
-		body.login div#login p a {
-			color: white;
+		body.login div#login form#loginform {
+			background-color: #8CCDF8 !important;
+		}
+		body.login div#login form#loginform p.submit input#wp-submit{
+			background-color: #131315 !important;
 		}
         body.login label {
             font-size: 1rem;
