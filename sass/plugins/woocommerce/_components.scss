@@ -55,7 +55,7 @@
 		top: 0;
 		position: absolute;
 		left: 0;
-		color: $color__link;
+		color: $light_blue;
 	}
 }
 
@@ -103,7 +103,7 @@ p.stars {
 
 			&::before {
 				content: "\53";
-				color: $color__link;
+				color: $light_blue;
 				opacity: 1;
 			}
 		}
@@ -115,7 +115,7 @@ p.stars {
 
 			&::before {
 				content: "\53";
-				color: $color__link;
+				color: $light_blue;
 				opacity: 1;
 			}
 
@@ -130,7 +130,7 @@ p.stars {
 
 			&::before {
 				content: "\53";
-				color: $color__link;
+				color: $light_blue;
 				opacity: 1;
 			}
 		}
@@ -230,7 +230,8 @@ p.no-comments {
 .woocommerce-info,
 .woocommerce-noreviews,
 p.no-comments {
-	background-color: $woocommerce__color-info;
+	background-color: $dark_blue;
+	color: white;
 }
 
 .woocommerce-error {

@@ -308,8 +308,10 @@ if(get_field('service_description')) { ?>
 }
 }
 
-// remove product short description from product page
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+
+// remove review gravatar 
+remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
 
 
 // add CTA field
@@ -395,10 +397,13 @@ $permalink = get_permalink( wc_get_page_id( 'shop' ));
 
 // move related products 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-add_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 05 );
+// add_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 05 );
+
+// remove tablist
 
 // Remove Sidebar
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
 
 
 // --------------------------------------------
