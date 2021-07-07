@@ -221,7 +221,7 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 //excerpt length
 function fwd_fitness_excerpt_length($length) {
 	if(get_post_type(205)){
-		return 40;
+		return 30;
 	}else{
 		return $length;
 	}
