@@ -328,8 +328,8 @@ $contact = get_field('services_call_to_action');
 if($contact) { 
 $contact_url = $contact['url'];
 ?>
-
-<a class="call-to-action" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a>
+<div class="contact-cta">
+<a class="call-to-action" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a></div>
 <?php }
 
 }}
@@ -392,6 +392,13 @@ $permalink = get_permalink( wc_get_page_id( 'shop' ));
 
 
 }
+
+// move related products 
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+add_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 05 );
+
+// Remove Sidebar
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
 
 // --------------------------------------------
