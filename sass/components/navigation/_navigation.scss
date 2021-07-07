@@ -5,6 +5,34 @@
 	display: block;
 	width: 100%;
 	z-index: 10000;
+	width: 100%;
+
+	.hamburger {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		z-index: 1000;
+	}
+
+	.bar {
+		width: 20px;
+		height: 1px;
+		background: white;
+		margin: 0 auto 6px;
+	}
+
+	.bar:nth-of-type(2) {
+		width: 25px;
+	}
+
+	button.menu-toggle {
+		background: black;
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		margin: 10px;
+		z-index: 10;
+	}
 
 	ul {
 		display: none;
@@ -16,19 +44,29 @@
 		transform: translate(-50%);
 		width: 100%;
 		right: -50%;
+		z-index: -1;
 	}
 
 	li {
 		position: relative;
-		padding: 0.5rem;
 		background: rgba(255, 255, 255, 0.8);
 		text-align: center;
+
+		&:hover {
+			background: $dark_blue;
+			color: white;
+		}
 	}
 
 	a {
 		display: block;
 		text-decoration: none;
 		color: black;
+		padding: 0.5rem;
+
+		&:hover {
+			color: white;
+		}
 	}
 
 	button {
@@ -37,7 +75,6 @@
 
 }
 
-/* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
 	display: block;
@@ -54,7 +91,6 @@
 		bottom: initial;
 		right: initial;
 
-
 		li {
 			background: initial;
 		}
@@ -69,6 +105,7 @@
 		justify-content: flex-end;
 		position: absolute;
 		padding-right: 1rem;
+		bottom: 40px;
 
 		ul.sub-menu {
 			display: block;
@@ -84,18 +121,24 @@
 			}
 
 			li {
+				background: $dark_blue;
 
 				&:hover > ul,
 				&.focus > ul {
 					display: block;
 					left: auto;
+					background: $light_blue;
 				}
 			}
 
 			a {
 				width: 200px;
 				padding: 0.5rem;
-				background: $light_blue;
+				background: $dark_blue;
+
+				&:hover {
+					background: $light_blue;
+				}
 			}
 
 		}
@@ -126,36 +169,5 @@
 	.nav-next {
 		text-align: end;
 		flex: 1 0 50%;
-	}
-}
-
-.main-navigation {
-	width: 100%;
-
-	.hamburger {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		z-index: 1000;
-	}
-
-	.bar {
-		width: 20px;
-		height: 1px;
-		background: white;
-		margin: 0 auto 6px;
-	}
-
-	.bar:nth-of-type(2) {
-		width: 25px;
-	}
-
-	button.menu-toggle {
-		background: black;
-		width: 3.5rem;
-		height: 3.5rem;
-		border-radius: 50%;
-		margin: 10px;
-		z-index: 10;
 	}
 }
