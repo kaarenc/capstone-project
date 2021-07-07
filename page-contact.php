@@ -34,6 +34,15 @@ get_header();
 						echo '</div>';
 							
 					}
+
+					if ( get_field( 'address' ) ) {
+						echo '<div>';
+							echo '<h3>';
+								the_field('address');	
+							echo '</h3>';
+						echo '</div>';
+						
+					}
 					
 					if ( get_field( 'email_address' ) ) {
 						echo '<div>';
@@ -44,27 +53,18 @@ get_header();
 						
 					}
 
-					if ( get_field( 'address' ) ) {
-						echo '<div>';
-							echo '<h3>';
-								the_field('address');	
-							echo '</h3>';
-						echo '</div>';
-						
-					}
-
 				echo '</div>';
 
- 
-                if ( is_active_sidebar( 'custom-map-widget' )) : ?>
-                		<div id="contact-map-area" class="cmw-widget-area widget-area" role="complementary">
-                    		<?php dynamic_sidebar( 'custom-map-widget' ); ?>
-                        </div>
-        			<?php
-				endif;
+				$location = get_field('map');
+				if( $location ): ?>
+					<div class="acf-map" data-zoom="16">
+						<div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>"></div>
+					</div>
+				<?php endif;
+                
 			endif;
 
-			echo do_shortcode('[instagram-feed user="bcitfitness"]');
+			echo do_shortcode('[instagram-feed num=4 user="bcitfitness"]');
 
 		endwhile; // End of the loop.
 		?>
