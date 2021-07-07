@@ -1,11 +1,6 @@
 <?php
 /**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
+ * The template for displaying the contact page
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -26,8 +21,6 @@ get_header();
 			the_post();
 
 			if ( function_exists ( 'get_field' ) ) :
-
-                echo '<h2>Contact Us</h2>';
                 
                 echo do_shortcode('[wpforms id="94"]');
                     
@@ -62,8 +55,7 @@ get_header();
 
 				echo '</div>';
 
-
-                    
+ 
                 if ( is_active_sidebar( 'custom-map-widget' )) : ?>
                 		<div id="contact-map-area" class="cmw-widget-area widget-area" role="complementary">
                     		<?php dynamic_sidebar( 'custom-map-widget' ); ?>
@@ -72,8 +64,6 @@ get_header();
 				endif;
 			endif;
 
-
-			
 			echo do_shortcode('[instagram-feed user="bcitfitness"]');
 
 		endwhile; // End of the loop.
