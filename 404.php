@@ -14,11 +14,20 @@ get_header();
 
 		<section class="error-404 not-found">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'fwd-fitness' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'fwd-fitness' ); ?></p>
+
+			<p class="whoops"><?php esc_html_e( 'Woops!', 'fwd-fitness' ); ?></p>
+
+			<p class="four-description"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below?', 'fwd-fitness' ); ?></p>
+			
+			<div class="four-container">
+					<p class="four"> 4 
+					<?php the_custom_logo(); ?>
+					4</p>
+						
+			</div>
 
 					<?php
 					get_search_form();
@@ -26,22 +35,22 @@ get_header();
 					the_widget( 'WP_Widget_Recent_Posts' );
 					?>
 
-					<div class="widget widget_categories">
+					<!-- <div class="widget widget_categories">
 						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'fwd-fitness' ); ?></h2>
 						<ul>
 							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
+							// wp_list_categories(
+							// 	array(
+							// 		'orderby'    => 'count',
+							// 		'order'      => 'DESC',
+							// 		'show_count' => 1,
+							// 		'title_li'   => '',
+							// 		'number'     => 10,
+							// 	)
+							// );
 							?>
 						</ul>
-					</div><!-- .widget -->
+					</div>.widget -->
 
 					<?php
 					/* translators: %1$s: smiley */
