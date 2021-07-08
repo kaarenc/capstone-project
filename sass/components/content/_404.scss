@@ -1,0 +1,65 @@
+.four {
+  font-size: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.four-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  height: 50vh;
+  margin-bottom: 0.5em;
+  background-color: #f5f5f5;
+  padding-bottom: 20px;
+}
+
+.whoops {
+  right: 0;
+  left: 0;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+}
+
+.four-description {
+  right: 0;
+  left: 0;
+  position: relative;
+  text-align: center;
+  font-size: 25px;
+}
+
+@media (min-width: 400px) {
+  .four-container {
+    height: 85vh;
+  }
+}
+
+@media (min-width: 600px) {
+  .four {
+    font-size: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .error404 .custom-logo-link {
+    max-width: 400px;
+    height: auto;
+  }
+
+  .four-container {
+    height: 60vh;
+  }
+}
+
+.error404 .custom-logo-link {
+  max-width: 200px;
+  height: auto;
+}
