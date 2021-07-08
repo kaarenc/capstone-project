@@ -40,6 +40,7 @@
   border-radius: 5px;
 }
 
+//styling for info wrapper in footer is in _footer.scss
 .infoWrapper {
   display: flex;
   justify-content: space-between;
@@ -56,35 +57,3 @@
     }
   }
 }
-
-// @media (min-width: $desktop) {
-//   .wpforms-field-container {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: 1fr 1fr;
-//     gap: 0px 10px;
-//     grid-template-areas:
-//       "name message"
-//       "email message";
-//   }
-//   // .wpforms-field-row-block.wpforms-first.wpforms-one-half {
-//   //   grid-area: firstName;
-//   //   // padding: 0;
-//   // }
-//   // .wpforms-field-row-block.wpforms-one-half {
-//   //   grid-area: lastName;
-//   //   // padding: 0;
-//   // }
-//   .wpforms-field-row.wpforms-field-large {
-//     grid-area: name;
-//     // padding: 0;
-//   }
-//   #wpforms-94-field_1-container {
-//     grid-area: email;
-//     // padding: 0
-//   }
-//   #wpforms-94-field_2-container {
-//     grid-area: message;
-//     // padding: 0;
-//   }
-// }
