@@ -315,7 +315,7 @@ remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar
 
 
 // add CTA field
-add_action( 'woocommerce_single_product_summary', 'custom_cta_field', 60 );
+// add_action( 'woocommerce_single_product_summary', 'custom_cta_field', 60 );
   
 function custom_cta_field() { ?>
  
@@ -380,7 +380,7 @@ if( $service_instructor ): ?>
 
 // add link to products archive page
 
-add_action( 'woocommerce_single_product_summary', 'link_to_services', 50 );
+add_action( 'woocommerce_single_product_summary', 'link_to_services', 70 );
   
 function link_to_services() { ?>
 
@@ -404,6 +404,12 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_r
 // Remove Sidebar
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
+// remove product summary
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+function woocommerce_template_single_excerpt() {
+        return;
+}
 
 
 // --------------------------------------------
@@ -427,3 +433,27 @@ function custom_woocommerce_page_title( $page_title ) {
     return "Services";
   }
 }
+
+// remove sorting 
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+remove_action( 'woocommerce_no_products_found', 'wc_no_products_found' );
+
+
+// move image
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 30 );
+
+
+add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
+	global $product;
+	if ( $product->is_type( 'variable' ) ) {
+		$text = $product->is_purchasable() ? __( 'Shop Now', 'woocommerce' ) : __( 'Read more', 'woocommerce' );
+	}
+	return $text;
+}, 10 );
+
+
+
+
+add_action( 'woocommerce_product_add_to_cart_text', 'custom_cta_field', 5 );

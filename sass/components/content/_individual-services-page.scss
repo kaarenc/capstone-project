@@ -88,7 +88,7 @@
         .variations_form {
             margin-top: 2rem;
             border-top: solid $dark_blue 5px;
-            padding: 2rem;
+            padding-top: 2rem;
             
            .variations  tr{
                display: flex;
@@ -126,6 +126,7 @@
                margin: 1rem auto;
                font-weight: bold;
                padding: 1rem;
+               width: 15rem;
                box-shadow: 0px 0px 3px 0px #23232374;
            }
            }
@@ -138,37 +139,38 @@
         }
 
        
-    }
-            .contact-cta{
-                width: 100%;
-                // padding: 1rem;
-                display: flex;
-                justify-content: center;
-                a.call-to-action {
-                    border: double $light_blue 2px;
-                    margin: 0 auto;
-                    padding: .5rem;
-                    text-decoration: none;
-                    color: $plain_white;
-                    background-color: $dark_blue;
-                    box-shadow: 0px 0px 3px 0px #23232374;
+   
+            // .contact-cta{
+            //     width: 100%;
+            //     // padding: 1rem;
+            //     display: flex;
+            //     justify-content: center;
+                
+            //     a.call-to-action {
+            //         border: double $light_blue 2px;
+            //         margin: 0 auto;
+            //         padding: .5rem;
+            //         text-decoration: none;
+            //         color: $plain_white;
+            //         background-color: $dark_blue;
+            //         box-shadow: 0px 0px 3px 0px #23232374;
 
-                    }
-                }
+            //         }
+            //     }
                
 
         .other-services-button {
             display: flex;
             justify-content: center;
-            border-top: solid $dark_blue 5px;
+            // border-top: $border;
             padding: 1rem;
               .other-services-link {
             border: $dark_blue 3px double;
             padding: .5rem;
             text-decoration: none;
             color: $color__text-main;
-            // background-color: rgb(142, 121, 103);
-            margin: 1rem auto;
+            
+            // margin: 1rem auto;
             width: 15rem;
             text-align: center;
             box-shadow: 0px 0px 3px 0px #23232374;
@@ -178,7 +180,7 @@
         }
         }
 
-
+ }
        
 
 
