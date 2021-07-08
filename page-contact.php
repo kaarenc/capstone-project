@@ -22,7 +22,7 @@ get_header();
 
 			if ( function_exists ( 'get_field' ) ) :
                 
-                echo do_shortcode('[wpforms id="94"]');
+                echo do_shortcode('[wpforms id="94" title="false"]');
                     
 				echo '<div class="infoWrapper">';
 
