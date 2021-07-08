@@ -18,9 +18,77 @@ get_header();
 	<main id="primary" class="site-main">
 
 	<?php
-			while ( have_posts() ) :
-				the_post_thumbnail(22);
-				the_post(); ?>
+		while ( have_posts() ) :
+			the_post();
+			
+		?>
+
+			
+
+
+		<section class="landing">
+				<?php 
+		the_post_thumbnail(22);
+		// the_title(); ?>
+		<h1>Positively Fit</h1>
+
+		<div class="cta-buttons"> 
+			<?php
+			
+			if(function_exists('get_field')):
+				$button = get_field('call_to_action_shop');
+
+				if( $button ):?>
+
+					<div class="button">
+					<!-- output the call to action link--shop -->
+						<?php 
+						$link = get_field('call_to_action_shop');
+						if( $link ): 
+							$link_url = $link['url'];
+							$link_title = $link['title'];
+							$link_target = $link['target'] ? $link['target'] : '_self';
+							?>
+							<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+						<?php endif; ?>
+					</div>
+
+				<?php
+				endif;
+			endif;
+				
+				?>
+
+			
+
+				<?php 
+				if(function_exists('get_field')):
+
+					$button = get_field('call_to_action_contact');
+
+					if( $button ):?>
+
+						<div class="button">
+							<!-- output the call to action link--contact -->
+							<?php 
+							$link = get_field('call_to_action_contact');
+							if( $link ): 
+								$link_url = $link['url'];
+								$link_title = $link['title'];
+								$link_target = $link['target'] ? $link['target'] : '_self';
+								?>
+								<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+							<?php endif; ?>
+						</div>
+
+
+					<?php
+					endif;
+				endif;
+				
+				?>
+				</div>
+			</section>
 
 		<section class="home-intro">
 				<!-- Home ACF -->
@@ -110,20 +178,22 @@ get_header();
 					$featured_posts = get_field('team_members');
 					if( $featured_posts ): ?>
 					<h2>Team Members</h2>
-						<article>
-						<?php foreach( $featured_posts as $post ): 
-							// Setup this post for WP functions (variable must be named $post).
-							setup_postdata($post); ?>
+						<div class="all-staff-members">
+							<?php foreach( $featured_posts as $post ): ?>
+							<article>
+								<?php
+								// Setup this post for WP functions (variable must be named $post).
+								setup_postdata($post); ?>
 
-								<h3>
-									<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
-								</h3>
-								<!-- change size of photo here?? -->
-								<?php the_post_thumbnail(''); ?>
-
-						<?php endforeach; ?>
-
-						</article>
+									<h3>
+										<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
+									</h3>
+									<!-- change size of photo here?? -->
+									<?php the_post_thumbnail(''); ?>
+							</article>
+							<?php endforeach; ?>
+						</div>
+						
 						<?php 
 						// Reset the global post object so that the rest of the page works correctly.
 						wp_reset_postdata(); ?>
@@ -154,65 +224,9 @@ get_header();
 
 			</section>
 
-			<?php 
-			if(function_exists('get_field')):
-				$button = get_field('call_to_action_shop');
-
-				if( $button ):?>
-
-					<div class="button">
-					<!-- output the call to action link--shop -->
-						<?php 
-						$link = get_field('call_to_action_shop');
-						if( $link ): 
-							$link_url = $link['url'];
-							$link_title = $link['title'];
-							$link_target = $link['target'] ? $link['target'] : '_self';
-							?>
-							<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-						<?php endif; ?>
-					</div>
-
-
-				<?php
-				endif;
-			endif;
-				
-				?>
-
-			
-
-				<?php 
-				if(function_exists('get_field')):
-
-					$button = get_field('call_to_action_contact');
-
-					if( $button ):?>
-
-						<div class="button">
-							<!-- output the call to action link--contact -->
-							<?php 
-							$link = get_field('call_to_action_contact');
-							if( $link ): 
-								$link_url = $link['url'];
-								$link_title = $link['title'];
-								$link_target = $link['target'] ? $link['target'] : '_self';
-								?>
-								<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-							<?php endif; ?>
-						</div>
-
-
-					<?php
-					endif;
-				endif;
-				
-				?>
-	
-
 			<!-- Output the instagram grid -->
 			<?php	
-			 echo do_shortcode('[instagram-feed user="bcitfitness"]');
+			 echo do_shortcode('[instagram-feed user="bcitfitness" cols=4 num=8 showfollow=true followcolor=#0093B8 headercolor=#131315]');
 			?>
 
 
