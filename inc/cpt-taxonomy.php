@@ -5,7 +5,7 @@ function fit_register_custom_post_types() {
     
     // Register Staff
     $labels = array(
-        'name'                  => _x( 'Staff', 'post type general name' ),
+        'name'                  => _x( 'Our Team', 'post type general name' ),
         'singular_name'         => _x( 'Staff', 'post type singular name'),
         'menu_name'             => _x( 'Staff', 'admin menu' ),
         'name_admin_bar'        => _x( 'Staff', 'add new on admin bar' ),

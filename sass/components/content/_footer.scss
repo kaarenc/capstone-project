@@ -1,0 +1,90 @@
+//styling for info wrapper in contact page is in _contactPage.scss
+
+.site-footer {
+  display: grid;
+  max-width: 30rem;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 0.5fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "contactInfo siteMap"
+    "googleMap googleMap"
+    "copyright copyright";
+
+  .infoWrapperFooter {
+    grid-area: contactInfo;
+    align-self: center;
+    padding-left: 1.5rem;
+    p {
+      margin: 0;
+      padding: 0.5rem 0;
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+  }
+
+  #footer-navigation {
+    grid-area: siteMap;
+    align-self: center;
+    // text-align: right;
+  }
+
+  .acf-map.acf-map-footer {
+    grid-area: googleMap;
+    align-self: center;
+    padding: 0 1rem;
+  }
+
+  .site-info {
+    grid-area: copyright;
+    align-self: center;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+}
+
+#menu-footer-menu {
+  align-content: flex-end;
+  li {
+    padding-left: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+// #menu-item-291,
+// #menu-item-290 {
+//   width: 3rem;
+// }
+
+#menu-footer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 5rem;
+}
+
+//styling for map in footer
+.acf-map.acf-map-footer {
+  width: 91%;
+  height: 200px;
+  border: #ccc solid 1px;
+  margin: 0 auto;
+}
+
+@media (min-width: $tabletWide) {
+  .site-footer {
+    max-width: 45rem;
+    .infoWrapperFooter {
+      padding-left: 0;
+    }
+  }
+  .acf-map.acf-map-footer {
+    width: 100%;
+    height: 300px;
+  }
+}

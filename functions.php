@@ -146,6 +146,24 @@ function fwd_fitness_scripts() {
 
 	wp_enqueue_script( 'fwd-fitness-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	//enque google maps scripts
+
+	wp_enqueue_script(
+		'google-map',
+		get_template_directory_uri() . '/js/google-map.js',
+		array('jquery', 'google-server'),
+		_S_VERSION,
+		true
+	);
+	
+	wp_enqueue_script(
+		'google-server',
+		'https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFHEIf-Lp4LAaWuYhyMW9tBKcBrzKb7E',
+		array(),
+		_S_VERSION,
+		true
+	);
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -175,6 +193,10 @@ function fwd_fitness_scripts() {
 			true
 		);
 	}
+
+	
+
+	
 }
 add_action( 'wp_enqueue_scripts', 'fwd_fitness_scripts' );
 
@@ -221,7 +243,7 @@ require get_template_directory() . '/inc/cpt-taxonomy.php';
 //excerpt length
 function fwd_fitness_excerpt_length($length) {
 	if(get_post_type(205)){
-		return 40;
+		return 30;
 	}else{
 		return $length;
 	}
@@ -414,3 +436,10 @@ register_sidebar( array(
 
 }
 add_action( 'widgets_init', 'wpb_widgets_init' );
+
+// adding google maps functionality
+function my_acf_google_map_api( $api ){
+    $api['key'] = 'AIzaSyCfFHEIf-Lp4LAaWuYhyMW9tBKcBrzKb7E';
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');

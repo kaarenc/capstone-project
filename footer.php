@@ -13,22 +13,54 @@
 
 	<footer id="colophon" class="site-footer">
 
-	<!-- add map to footer -->
 	<?php
-if ( is_active_sidebar( 'custom-footer-widget' ) && is_page( 29 ) === false) : ?>
-	 <div id="footer-footer-area" class="cfw-widget-area widget-area" role="complementary">
-	 <?php dynamic_sidebar( 'custom-footer-widget' ); ?>
-	 </div>
+
+	if ( function_exists ( 'get_field' ) ) :
+					
+		echo '<div class="infoWrapperFooter">';
+
+			if ( get_field( 'phone_number', 29 ) ) {
+				
+					echo '<p>';
+						the_field('phone_number', 29);
+					echo '</p>';
+				
+					
+			}
+			
+			if ( get_field( 'email_address', 29 ) ) {
+				
+					echo '<p>';
+						the_field('email_address', 29);	
+					echo '</p>';
+				
+				
+			}
+
+		echo '</div>';
+
+	endif; ?>
+
+		<nav id = "footer-navigation" class="footer-navigation">
+			<?php wp_nav_menu(array('theme_location' => 'footer')); ?>
+		</nav>
+
+	<?php
+
+	if( is_page(29) ==false ){
+
+		//the code is same as the contact page code except I added page ID of 29 which is the contact page ID.
+		//adding google map to footer
+
+		$location = get_field('map', 29);
+		if( $location ): ?>
+			<div class="acf-map acf-map-footer" data-zoom="16">
+				<div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>"></div>
+			</div>
+		<?php endif; 
+	}
+	?>
 	  
- <?php endif; ?>
-			<nav id = "footer-navigation" class="footer-navigation">
-				<?php
-				wp_nav_menu(array('theme_location' => 'footer'));
-		
-				?>
-			</nav>
-		
- 
  
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'fwd-fitness' ) ); ?>">

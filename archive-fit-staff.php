@@ -30,8 +30,11 @@ get_header();
 
 			$query = new WP_Query( $args );
 
-			if( $query -> have_posts() ) :
+			if( $query -> have_posts() ) : ?>
 
+			<div class="all-staff">
+
+			<?php
 				while ( $query -> have_posts() ) :
 					$query -> the_post(); ?>
 
@@ -60,6 +63,7 @@ get_header();
 							$team_member_classes = get_field('team_member_classes');
 
 							if( $team_member_classes ) : ?>
+							<div class="classes-taught">
 							<h3>Classes Taught:</h3>
 								<ul>
 								<?php foreach( $team_member_classes as $post ) : 
@@ -73,7 +77,7 @@ get_header();
 								<?php endforeach;
 								wp_reset_postdata(); ?>
 								</ul>
-								
+							</div>
 							<?php endif; 
 							
 						endif; ?>
@@ -81,7 +85,9 @@ get_header();
 					</article>
 
 				<?php
-				endwhile;
+				endwhile; ?>
+				</div>
+				<?php
 				wp_reset_postdata();
 
 			endif;

@@ -1,11 +1,20 @@
 .page-id-29 .post-thumbnail {
-  position: absolute;
-  top: 0;
-  z-index: -1;
   img {
     object-fit: cover;
-    height: 100vh;
-    opacity: 0.4;
+    max-height: 45rem;
+    // opacity: 0.4;
+  }
+}
+
+.post-29#post-29 {
+  position: relative;
+  .entry-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.75rem;
+    // color: $dark_blue;
   }
 }
 
@@ -15,7 +24,9 @@
 }
 
 .wpforms-container.wpforms-container-full {
-  margin: 1rem;
+  padding: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
 }
 
 .wpforms-submit#wpforms-submit-94 {
@@ -29,18 +40,20 @@
   border-radius: 5px;
 }
 
+//styling for info wrapper in footer is in _footer.scss
 .infoWrapper {
   display: flex;
   justify-content: space-between;
-  margin: 0 1rem;
+  max-width: 60rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  align-items: center;
+  font-size: 0.75rem;
   div {
     max-width: 9rem;
+    display: inline-block;
     h3 {
       margin: 0;
     }
   }
 }
-
-// @media(min-width: $){
-
-// }

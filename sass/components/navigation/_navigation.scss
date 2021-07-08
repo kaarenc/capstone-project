@@ -66,13 +66,16 @@
 
 		&:hover {
 			color: white;
+
+			path {
+				fill: white;
+			}
 		}
 	}
 
 	button {
 		float: right;
 	}
-
 }
 
 .menu-toggle,
@@ -135,12 +138,14 @@
 				width: 200px;
 				padding: 0.5rem;
 				background: $dark_blue;
+				color: white;
 
 				&:hover {
 					background: $light_blue;
+					color: black;
+					fill: $bright_yellow;
 				}
 			}
-
 		}
 
 		li:hover > ul,

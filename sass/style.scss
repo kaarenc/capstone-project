@@ -86,6 +86,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "components/content/header";
 @import "components/navigation/navigation";
 @import "components/content/404";
+@import "components/content/staffPage";
+@import "components/content/individual-services-page";
+@import "components/content/services";
+@import "components/content/frontPage";
+
 
 
 /*--------------------------------------------------------------
@@ -109,7 +114,5 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "utilities/alignments";
 
 
-/* Pages
------------------------------------------------- */
 
-@import "components/content/individual-services-page";
+
