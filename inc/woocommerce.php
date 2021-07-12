@@ -454,9 +454,15 @@ add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
 }, 10 );
 
 
-
-
 add_action( 'woocommerce_product_add_to_cart_text', 'custom_cta_field', 5 );
 
 
 //cart stuff
+
+// function excerpt_in_product_archives() {
+      
+//     the_excerpt();
+// }
+
+
+// add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
