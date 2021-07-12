@@ -457,3 +457,6 @@ add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
 
 
 add_action( 'woocommerce_product_add_to_cart_text', 'custom_cta_field', 5 );
+
+
+//cart stuff

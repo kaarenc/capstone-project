@@ -443,3 +443,6 @@ function my_acf_google_map_api( $api ){
     return $api;
 }
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+//remove quantity from cart
+
