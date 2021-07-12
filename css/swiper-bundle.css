@@ -17,11 +17,14 @@
   font-style: normal;
 }
 :root {
-  --swiper-theme-color: #007aff;
+  --swiper-theme-color: #0093B8;
 }
 .swiper-container {
-  margin-left: auto;
-  margin-right: auto;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* margin-left: auto;
+  margin-right: auto; */
   position: relative;
   overflow: hidden;
   list-style: none;
