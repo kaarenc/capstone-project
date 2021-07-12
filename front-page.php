@@ -140,68 +140,65 @@ get_header();
 
 
 			<section class="featured-blog">
-				<!-- Output the featured blog posts -->
+				<!-- Output the featured blog posts slider -->
 				<?php
 
 				if(function_exists('get_field')):
 				
 					$featured_posts = get_field('featured_blog_posts');
+
 					if( $featured_posts ): ?>
 
-					<h2>Featured Blog Posts</h2>
+						<h2>Featured Blog Posts</h2>
 
-						<article>
-						<?php foreach( $featured_posts as $post ): 
-							// Setup this post for WP functions (variable must be named $post).
-							setup_postdata($post); ?>
-								<a href="<?php the_permalink(); ?>">
-									<h3><?php the_title(); ?></h3>
-									<!-- change size of photo here?? -->
-									<?php the_post_thumbnail(''); ?>
-								</a>
-						<?php endforeach; ?>
-						</article>
-						<?php 
-						// Reset the global post object so that the rest of the page works correctly.
-						wp_reset_postdata(); ?>
-					<?php endif;
-					endif;
-					?>
+						<?php echo do_shortcode('[smartslider3 slider="2"]'); ?>
+							
+						<?php wp_reset_postdata(); ?>
+
+					<?php endif; ?>
+
+				<?php endif; ?>
+
 			</section>
 
 
 			<section class="team-members">
-				<!-- Output the featured blog posts -->
+				<!-- Output the team members -->
 				<?php
 
 				if(function_exists('get_field')):
 					$featured_posts = get_field('team_members');
 					if( $featured_posts ): ?>
+
 					<h2>Team Members</h2>
+
 						<div class="all-staff-members">
 							<?php foreach( $featured_posts as $post ): ?>
 							<article>
 								<?php
 								// Setup this post for WP functions (variable must be named $post).
-								setup_postdata($post); ?>
+								setup_postdata($post); 
+								?>
 
-									<h3>
-										<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
-									</h3>
-									<!-- change size of photo here?? -->
-									<?php the_post_thumbnail(''); ?>
+								<h3>
+									<a href="<?php echo get_post_type_archive_link( 'fit-staff' ); ?>"><?php the_title(); ?></a>
+								</h3>
+
+								<?php the_post_thumbnail(''); ?>
+
 							</article>
+
 							<?php endforeach; ?>
+
 						</div>
 						
-						<?php 
-						// Reset the global post object so that the rest of the page works correctly.
-						wp_reset_postdata(); ?>
-					<?php endif;
-				endif;
-				 ?>
+						<?php wp_reset_postdata(); ?>
 
+					<?php endif; ?>
 
+				<?php endif; ?>
+
+				<!-- Output the link to all staff members page -->
 				<?php 
 				if(function_exists('get_field')):
 					$team_members = get_field('all_team_members');
@@ -209,8 +206,6 @@ get_header();
 					if( $team_members):?>
 
 						<div class="button">
-							<!-- output the call to action link--shop -->
-							<!-- ask jonathin about this!! -->
 							<a href="<?php the_field('all_team_members'); ?>">View all Team Members</a>
 						</div>
 
