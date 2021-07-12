@@ -1,0 +1,33 @@
+#post-18.post-18 {
+  .entry-header {
+    padding-top: 7rem;
+  }
+}
+
+.woocommerce table.cart td:nth-of-type(5),
+.woocommerce table.cart th:nth-of-type(5) {
+  display: none;
+}
+.woocommerce table.cart tr:nth-of-type(2) {
+  display: none;
+}
+
+.woocommerce-cart-form {
+  border: $border;
+  margin: 1rem;
+  table {
+    // padding: 1rem;
+    position: relative;
+  }
+}
+
+.product-thumbnail a img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 80%;
+  height: 10rem;
+  object-fit: cover;
+}
