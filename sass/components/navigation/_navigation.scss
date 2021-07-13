@@ -1,183 +1,181 @@
 .main-navigation {
-	bottom: 0;
-	right: 0;
-	position: fixed;
-	display: block;
-	width: 100%;
-	z-index: 10000;
-	width: 100%;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  display: block;
+  width: 100%;
+  z-index: 10000;
+  width: 100%;
 
-	.hamburger {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		z-index: 1000;
-	}
+  .hamburger {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1000;
+  }
 
-	.bar {
-		width: 20px;
-		height: 1px;
-		background: white;
-		margin: 0 auto 6px;
-	}
+  .bar {
+    width: 20px;
+    height: 1px;
+    background: white;
+    margin: 0 auto 6px;
+  }
 
-	.bar:nth-of-type(2) {
-		width: 25px;
-	}
+  .bar:nth-of-type(2) {
+    width: 25px;
+  }
 
-	button.menu-toggle {
-		background: black;
-		width: 3.5rem;
-		height: 3.5rem;
-		border-radius: 50%;
-		margin: 10px;
-		z-index: 10;
-	}
+  button.menu-toggle {
+    background: black;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    margin: 10px;
+    z-index: 10;
+  }
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-		position: absolute;
-		bottom: 0;
-		transform: translate(-50%);
-		width: 100%;
-		right: -50%;
-		z-index: -1;
-	}
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    position: absolute;
+    bottom: 0;
+    transform: translate(-50%);
+    width: 100%;
+    right: -50%;
+    z-index: -1;
+  }
 
-	li {
-		position: relative;
-		background: rgba(255, 255, 255, 0.8);
-		text-align: center;
+  li {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
 
-		&:hover {
-			background: $dark_blue;
-			color: white;
-		}
-	}
+    &:hover {
+      background: $dark_blue;
+      color: white;
+    }
+  }
 
-	a {
-		display: block;
-		text-decoration: none;
-		color: black;
-		padding: 0.5rem;
+  a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 0.5rem;
 
-		&:hover {
-			color: white;
+    &:hover {
+      color: white;
 
-			path {
-				fill: white;
-			}
-		}
-	}
+      path {
+        fill: white;
+      }
+    }
+  }
 
-	button {
-		float: right;
-	}
+  button {
+    float: right;
+  }
 }
 
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
-	background: transparent;
-	border: none;
+  display: block;
+  background: transparent;
+  border: none;
 }
 
-.main-navigation ul.sub-menu{
-	display: none;
+.main-navigation ul.sub-menu {
+  display: none;
 }
- 
+
 /* Highlight using link element */
-li.current-menu-item a{
-    text-decoration:underline;
+li.current-menu-item a {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 37.5em) {
-	.main-navigation {
-		bottom: initial;
-		right: initial;
+  .main-navigation {
+    bottom: initial;
+    right: initial;
 
-		li {
-			background: initial;
-		}
-	}
+    li {
+      background: initial;
+    }
+  }
 
-	.menu-toggle {
-		display: none;
-	}
+  .menu-toggle {
+    display: none;
+  }
 
-	.main-navigation ul {
-		display: flex;
-		justify-content: flex-end;
-		position: absolute;
-		padding-right: 1rem;
-		bottom: 40px;
+  .main-navigation ul {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    padding-right: 1rem;
+    bottom: 40px;
 
-		ul.sub-menu {
-			display: block;
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
-			
-			ul {
-				left: -999em;
-				top: 0;
-			}
+    ul.sub-menu {
+      display: block;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 100%;
+      left: -999em;
+      z-index: 99999;
 
-			li {
-				background: $dark_blue;
+      ul {
+        left: -999em;
+        top: 0;
+      }
 
-				&:hover > ul,
-				&.focus > ul {
-					display: block;
-					left: auto;
-					background: $light_blue;
-				}
-			}
+      li {
+        background: $dark_blue;
 
-			a {
-				width: 200px;
-				padding: 0.5rem;
-				background: $dark_blue;
-				color: white;
+        &:hover > ul,
+        &.focus > ul {
+          display: block;
+          left: auto;
+          background: $light_blue;
+        }
+      }
 
-				&:hover {
-					background: $light_blue;
-					color: black;
-					fill: $bright_yellow;
-				}
-			}
-		}
+      a {
+        width: 200px;
+        padding: 0.5rem;
+        background: $dark_blue;
+        color: white;
 
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
+        &:hover {
+          background: $light_blue;
+          color: black;
+          fill: $bright_yellow;
+        }
+      }
+    }
+
+    li:hover > ul,
+    li.focus > ul {
+      left: auto;
+    }
+  }
 }
 
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
+  .site-main & {
+    margin: 0 0 1.5em;
+  }
 
-	.site-main & {
-		margin: 0 0 1.5em;
-	}
+  .nav-links {
+    display: flex;
+  }
 
-	.nav-links {
-		display: flex;
-	}
+  .nav-previous {
+    flex: 1 0 50%;
+  }
 
-	.nav-previous {
-		flex: 1 0 50%;
-	}
-
-	.nav-next {
-		text-align: end;
-		flex: 1 0 50%;
-	}
+  .nav-next {
+    flex: 1 0 50%;
+  }
 }
