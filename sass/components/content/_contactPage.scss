@@ -43,20 +43,28 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container {
   border-radius: 5px;
 }
 
+.infoWrapper{
+  display:none;
+}
+
+@media(min-width:600px){
 //styling for info wrapper in footer is in _footer.scss
-.infoWrapper {
-  display: flex;
-  justify-content: space-between;
-  max-width: 60rem;
-  padding: 1rem;
-  margin: 2rem auto;
-  align-items: center;
-  font-size: 0.75rem;
-  div {
-    max-width: 9rem;
-    display: inline-block;
-    h3 {
-      margin: 0;
+  .infoWrapper {
+    display: flex;
+    justify-content: space-between;
+    visibility:visible;
+    max-width: 60rem;
+    padding: 1rem;
+    margin: 2rem auto;
+    align-items: center;
+    font-size: 0.75rem;
+    div {
+      max-width: 9rem;
+      display: inline-block;
+      h3 {
+        margin: 0;
+      }
     }
   }
+
 }
