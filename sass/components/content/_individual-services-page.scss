@@ -1,6 +1,5 @@
 .woocommerce-product-gallery {
     width: 100%;
-
     a {
         margin: 0;
         padding: 0;
@@ -15,48 +14,26 @@
         padding: 0;
         margin: 0;
     }
-
-    
-
 }
 
-      .woocommerce-breadcrumb{
-            padding: 2.5rem;
-            a {
-                text-decoration: underline $dark_blue;
-                color: $dark_blue;
-            }
-        }
-
-
-
-
 .product .entry-summary {
-        // // background-color: #f4f4f4;
         border-top: 5px solid $dark_blue;
         border-bottom: 5px solid $dark_blue;
         padding-bottom: 2rem;
         width: 90%;
         margin: 0 auto;
-        // // border-radius: .5rem;
-        // box-shadow: 0px 0px 5px 0px #23232374;
 
         .product_title {
             color: $dark-grey;
-            // background-color: rgba(255, 255, 255, 0.625);
-            // border-radius: .5rem;
             padding: 1rem ;
             text-align: center;
         }
         .service-description {
-            //  background-color: rgba(255, 255, 255, 0.625);
              padding: 2rem;
-            //  border-radius: .5rem;
             border-top: solid $dark_blue 5px;
         }
         
         .instructors {
-            // background-color: rgba(255, 255, 255, 0.625);
             padding: 1rem;
             border-top: solid $dark_blue 5px;
             text-align: center;
@@ -67,24 +44,20 @@
                flex-wrap: wrap;
                justify-content: center;
             
-            li {
-                list-style: none;
-                // text-align: center;
-                padding: 0;
-                margin: 1rem;
+                 li {
+                    list-style: none;
+                    padding: 0;
+                    margin: 1rem;
                
+                    a {
+                        font-weight: bold;
+                        color: black;
+                        }
                 
-                a {
-                    font-weight: bold;
-                    // text-decoration: none;
-                    color: black;
-                }
-                
+                    }
+                }       
             }
-        }}
         
-      
-
         .variations_form {
             margin-top: 2rem;
             border-top: solid $dark_blue 5px;
@@ -97,13 +70,10 @@
                .value {
                 display: flex;
                 flex-direction: column;
-                // width: 10rem;
                 justify-content: center;
                 select {
                     width: 5rem;
-                    margin: .5rem auto;
-                   
-                   
+                    margin: .5rem auto;  
                 }
                }
            }
@@ -128,6 +98,14 @@
                padding: 1rem;
                width: 15rem;
                box-shadow: 0px 0px 3px 0px #23232374;
+               &:hover {
+                color: $color__text-main;
+                background-color: $light_blue;
+            }
+            &:focus {
+                border: double black 3px;
+                text-decoration: underline;
+            }
            }
            }
            }
@@ -138,44 +116,28 @@
 
         }
 
-       
-   
-            // .contact-cta{
-            //     width: 100%;
-            //     // padding: 1rem;
-            //     display: flex;
-            //     justify-content: center;
-                
-            //     a.call-to-action {
-            //         border: double $light_blue 2px;
-            //         margin: 0 auto;
-            //         padding: .5rem;
-            //         text-decoration: none;
-            //         color: $plain_white;
-            //         background-color: $dark_blue;
-            //         box-shadow: 0px 0px 3px 0px #23232374;
-
-            //         }
-            //     }
                
-
         .other-services-button {
             display: flex;
             justify-content: center;
-            // border-top: $border;
             padding: 1rem;
               .other-services-link {
-            border: $dark_blue 3px double;
-            padding: .5rem;
-            text-decoration: none;
-            color: $color__text-main;
-            
-            // margin: 1rem auto;
-            width: 15rem;
-            text-align: center;
-            box-shadow: 0px 0px 3px 0px #23232374;
-     
-           
+                border: $dark_blue 3px double;
+                padding: .5rem;
+                text-decoration: none;
+                color: $color__text-main;
+                width: 15rem;
+                text-align: center;
+                box-shadow: 0px 0px 3px 0px #23232374;
+                &:hover {
+                    border: $dark_blue 3px double;
+                    color: $color__text-main;
+                    background-color: $light_blue;
+            }
+                &:focus {
+                    border: double black 3px;
+                    text-decoration: underline;
+            }
                        
         }
         }
@@ -203,7 +165,6 @@
         padding: 0;
         display: flex;
         justify-content: center;
-        // align-items: center;
     }
         p.comment-notes {
             margin: 0;
@@ -217,7 +178,6 @@
         
         }
         margin: 0 auto;
-        // text-align: center;
    
         p.stars,
         p.comment-form-comment,
@@ -336,7 +296,6 @@
         }
         p.comment-form-email {
             grid-row: 4/5;
-            // margin: auto 0
         }
         p.comment-form-cookies-consent {
             grid-row: 5/6;
@@ -417,14 +376,12 @@
     .product .entry-summary {
         .product_title {
             grid-column: 1/2;
-            // border-right: $border;
         }
         .service-description {
             grid-column: 1/2;
             grid-template-rows: 1/6;
             border-bottom: none;
             margin: auto 0;
-            // border-right: $border;
         }
         .instructors {
             border-left: $border;
@@ -436,9 +393,7 @@
         }}
         .variations_form {
             grid-row: 2/3;
-            // border-left: $border;
             padding-top: 1rem;
-            // border-top: $border;
         }
         .other-services-button {
             grid-row: 3/4;
