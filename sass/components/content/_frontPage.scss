@@ -51,23 +51,7 @@
         }
     }
 
-    @media (min-width: $mobileWide) {
-        .home {
-            .landing {
-                img {
-                    border-bottom: none;
-                }
-            }
-
-            .info {
-                position: absolute;
-                bottom: 0;
-                background-color: rgba(255, 255, 255, 0.8);
-                width: 100vw;
-                padding-bottom: 1rem;
-            }
-        }
-    }
+    
 
     .post-thumbnail {
 
@@ -187,3 +171,21 @@
         margin-top: 3rem;
     }
 }
+
+@media (min-width: $mobileWide) {
+        .home {
+            .landing {
+                img {
+                    border-bottom: none;
+                }
+            }
+
+            .info {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.8);
+                width: 100vw;
+                padding-bottom: 1rem;
+            }
+        }
+    }
