@@ -2,6 +2,11 @@
 
     z-index: 99;
     position: absolute;
+
+    a {
+        position: relative;
+        z-index: 100000000;
+    }
     
     img {
         width: 4rem;

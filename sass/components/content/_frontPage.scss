@@ -12,16 +12,7 @@
             object-fit: cover;
             max-height: 45rem;
             width: 100%;
-          }
- 
-          .info {
-              position: absolute;
-              bottom: 0;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              background: rgba(255, 255, 255, 0.8);
-              width: 100vw;
-              padding-bottom: 1rem;
+            border-bottom: $border;
           }
 
         h1 {
@@ -56,6 +47,24 @@
               background-color: $dark_blue;
               box-shadow: 0px 0px 3px 0px #23232374;
 
+            }
+        }
+    }
+
+    @media (min-width: $mobileWide) {
+        .home {
+            .landing {
+                img {
+                    border-bottom: none;
+                }
+            }
+
+            .info {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(255, 255, 255, 0.8);
+                width: 100vw;
+                padding-bottom: 1rem;
             }
         }
     }
