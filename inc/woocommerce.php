@@ -277,6 +277,16 @@ remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar
 // Remove related products 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+// Remove Sidebar
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
+// Remove product summary
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+function woocommerce_template_single_excerpt() {
+        return;
+}
+
 // Add Title
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 10 );
 
@@ -294,15 +304,7 @@ if(get_field('service_description')) { ?>
 }
 }
 
-// Remove Sidebar
-remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
-// Remove product summary
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-
-function woocommerce_template_single_excerpt() {
-        return;
-}
 
 
 // -----------------------------------------------------------------------------
