@@ -141,6 +141,12 @@ add_action( 'widgets_init', 'fwd_fitness_widgets_init' );
  * Enqueue scripts and styles.
  */
 function fwd_fitness_scripts() {
+	wp_enqueue_style(
+		'fwd-fitness-googlefonts',
+		'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap',
+		array(),
+		null);
+		
 	wp_enqueue_style( 'fwd-fitness-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'fwd-fitness-style', 'rtl', 'replace' );
 
