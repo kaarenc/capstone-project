@@ -155,10 +155,13 @@ get_header();
 				?>
 			</section>
 
+			<section class="instagram-grid">
 			<?php	
 			 echo do_shortcode('[instagram-feed user="bcitfitness" cols=4 num=8 showfollow=true followcolor=#0093B8 headercolor=#131315]');
 			?>
+			</section>
 
+			<section class="testimonials">
 			<?php
 			$args = array(
 				'post_type'      => 'fit-testimonial',
@@ -183,12 +186,11 @@ get_header();
 								<?php endwhile; ?>
 							</div>
 							<div class="swiper-pagination"></div>
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
 						</div>
 					</section>
 			<?php wp_reset_postdata(); endif;
 		endif; ?>
+		</section>
 
 		<?php endwhile; ?>
 	</main>
