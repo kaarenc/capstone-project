@@ -179,7 +179,8 @@
             .woocommerce-shop {
                 .site-main{
                      .products {
-                    li.product {
+                    li.product { 
+                        min-width: 70rem;
                         .contact-cta {
                             right: 27%;
                         }
@@ -193,15 +194,3 @@
             }
 }
 
-@media (min-width: $megaDesktop) {
-    .woocommerce-shop {
-        .site-main {
-            .products {
-            li.product {
-                min-width: 60%;
-            }
-        }
-        }
-        
-    }
-}
