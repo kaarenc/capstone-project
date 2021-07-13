@@ -31,9 +31,7 @@ function fwd_fitness_woocommerce_setup() {
 			),
 		)
 	);
-	add_theme_support( 'wc-product-gallery-zoom' );
-	add_theme_support( 'wc-product-gallery-lightbox' );
-	add_theme_support( 'wc-product-gallery-slider' );
+
 }
 add_action( 'after_setup_theme', 'fwd_fitness_woocommerce_setup' );
 
@@ -233,66 +231,56 @@ if ( ! function_exists( 'fwd_fitness_woocommerce_header_cart' ) ) {
 // ----------------------------------------------------------------
 // PRODUCTS FUNCTIONS
 // ----------------------------------------------------------------
-
-// remove zoom on product images
-
-function remove_image_zoom_support() {
-    remove_theme_support( 'wc-product-gallery-zoom' );
-}
-add_action( 'wp', 'remove_image_zoom_support', 100 );
+// -------------------------------------------------
+// REMOVING ELEMENTS FROM THE SINGLE PRODUCT PAGE
+// -------------------------------------------------
 
 
-// Move breadcrumbs
+
+// Remove breadcrumbs
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_breadcrumb', 30, 0 );
 
-// Move title
+// Remove title
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 10 );
 
-// move price field
+// Remove price field
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
-// add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 70 );
 
-// remove meta data of product
+// Remove meta data of product
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 
-// remove additional information field
+// Remove additional information field
 remove_action( 'woocommerce_product_additional_information', 'wc_display_product_attributes', 10 );
 
-
-
-add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
-
-function remove_product_tabs( $tabs ) {
-
-  unset( $tabs['additional_information'] );
-
-  return $tabs;
-
-}
-
-
-
-// remove quantity box
-
+// Remove quantity box
 function custom_remove_all_quantity_fields( $return, $product ) {return true;}
 add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
 
+// Remove Tabs
+add_filter( 'woocommerce_product_tabs', 'remove_product_tabs', 9999 );
 
+function remove_product_tabs( $tabs ) {
+  unset( $tabs['additional_information'] );
+  return $tabs;
+}
 
-// remove description tab
+// Remove description tab
 add_filter( 'woocommerce_product_tabs', 'sd_remove_product_tabs', 98 );
 function sd_remove_product_tabs( $tabs ) {
     unset( $tabs['description'] );
     return $tabs;
 }
 
+// Remove review gravatar 
+remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
 
-// add ACF to products
+// Remove related products 
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+// Add Title
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 10 );
 
-// add description field
+// Add description field
 add_action( 'woocommerce_single_product_summary', 'custom_description_field', 15 );
   
 function custom_description_field() { ?>
@@ -300,29 +288,30 @@ function custom_description_field() { ?>
 <?php 
 if(function_exists('get_field')){
 
-
 if(get_field('service_description')) { ?>
-	<!-- <h2 class="service-description-title">Service Description: </h2> -->
 	<p class="service-description"><?php the_field('service_description'); ?></p>
 <?php }
 }
 }
 
+// Remove Sidebar
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
+// Remove product summary
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+
+function woocommerce_template_single_excerpt() {
+        return;
+}
 
 
-// remove review gravatar 
-remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar', 10 );
-
-
+// -----------------------------------------------------------------------------
+// ADDING ELEMENTS AND CTA FIELDS TO INDIVIDUAL SERVICES PAGE
 // add CTA field
-// add_action( 'woocommerce_single_product_summary', 'custom_cta_field', 60 );
-  
-function custom_cta_field() { ?>
- 
-<?php 
+// ----------------------------------------------------------------------------  
 
- 
-
+// Contact page CTA field
+function custom_cta_field() { 
 
 if(function_exists('get_field')){
 
@@ -336,10 +325,7 @@ $contact_url = $contact['url'];
 
 }}
 
-
-
-// add instructors field
-
+// Add instructors field
 add_action( 'woocommerce_single_product_summary', 'custom_instructor_field', 15 );
   
 function custom_instructor_field() { ?>
@@ -347,7 +333,6 @@ function custom_instructor_field() { ?>
 <?php 
 if(function_exists('get_field')){
 $service_instructor = get_field('instructors');
-
 
 if( $service_instructor ) { ?>
 
@@ -363,23 +348,19 @@ if( $service_instructor ): ?>
 		$custom_field = get_field( 'instructor', $instructor->ID );
 		
         ?>
-    
-			
+    			
 			<li><a href="<?php echo $permalink ?>"><?php echo esc_html( $title ); ?></a></li>
         
     <?php endforeach; ?>
     </ul>
 	</div>
 
-<?php endif; ?>
-
-	
-<?php }
+<?php endif;
+ }
 }
 }
 
-// add link to products archive page
-
+// Add link to products archive page
 add_action( 'woocommerce_single_product_summary', 'link_to_services', 70 );
   
 function link_to_services() { ?>
@@ -391,42 +372,36 @@ $permalink = get_permalink( wc_get_page_id( 'shop' ));
 <a class="other-services-link cta-button" href="<?php echo $permalink ?>">Check out our other services </a>
 </div>
 <?php
-
-
-}
-
-// move related products 
-remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-// add_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 05 );
-
-// remove tablist
-
-// Remove Sidebar
-remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
-
-// remove product summary
-remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
-
-function woocommerce_template_single_excerpt() {
-        return;
 }
 
 
 // --------------------------------------------
+
 // Shop edits
+
 // --------------------------------------------
 
+// --------------------------------
+// REMOVING ELEMENTS FROM SHOP PAGE
+// --------------------------------
 
+// Remove sorting 
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+remove_action( 'woocommerce_no_products_found', 'wc_no_products_found' );
+
+// Remove image
+remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+
+// Add short description field 
 function excerpt_in_product_archives() {
       
     the_excerpt();
 }
 
-
 add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
 
-// change select options text to more info
-
+// Customize page title
 add_filter( 'woocommerce_page_title', 'custom_woocommerce_page_title');
 function custom_woocommerce_page_title( $page_title ) {
   if( $page_title == 'Services' ) {
@@ -434,33 +409,10 @@ function custom_woocommerce_page_title( $page_title ) {
   }
 }
 
-// remove sorting 
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
-remove_action( 'woocommerce_no_products_found', 'wc_no_products_found' );
-
-
-// move image
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+// Add Image
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 30 );
 
-// add_theme_support( 'post-thumbnails' );
-
-// // Then we'll add our 2 custom images
-// add_image_size( 'large', 600, 600 );
-
-// // And then we'll add the custom size that spans the width of the blog to the Gutenberg image dropdown
-// add_filter( 'image_size_names_choose', 'wpmudev_custom_image_sizes' );
-
-// function wpmudev_custom_image_sizes( $sizes ) {
-//     return array_merge( $sizes, array(
-//         'large' => __( 'Large' ),
-//     ) );
-// }
-
-
-
-
+// Update 'select options' button to 'shop now'.
 add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
 	global $product;
 	if ( $product->is_type( 'variable' ) ) {
@@ -469,16 +421,6 @@ add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
 	return $text;
 }, 10 );
 
-
+// Add contact cta to shop page
 add_action( 'woocommerce_product_add_to_cart_text', 'custom_cta_field', 5 );
 
-
-//cart stuff
-
-// function excerpt_in_product_archives() {
-      
-//     the_excerpt();
-// }
-
-
-// add_action( 'woocommerce_after_shop_loop_item_title', 'excerpt_in_product_archives', 20 );
