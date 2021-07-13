@@ -140,11 +140,11 @@
                     }
                 
                     .contact-cta {
-                        // grid-row: 2/3;
-                        // grid-column: 2/3;
+                        grid-row: 2/3;
+                        grid-column: 2/3;
                         position: absolute;
                         bottom: 2rem;
-                        right: 25%;
+                        right: 27%;
                         width: 10rem;
                         a{
                             display: block;
@@ -156,7 +156,7 @@
                     .add_to_cart_button {
                         position: absolute;
                         bottom: 2rem;
-                        right: 5%;
+                        right: 4%;
                         // grid-row: 2/3;
                         // grid-column: 3/4;
                         max-width: 10rem;
@@ -174,5 +174,16 @@
 
 
 @media (min-width: $desktopWide) {
-    
+            .woocommerce-shop {
+                .products {
+                    .product {
+                        .contact-cta {
+                            right: 30%;
+                        }
+                        .add_to_cart_button {
+                            right: 10%;
+                        }
+                    }
+                }
+            }
 }
