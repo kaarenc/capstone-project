@@ -4,7 +4,7 @@
     position: absolute;
     
     img {
-        width: 7rem;
+        width: 4rem;
         z-index: 100;
     }
 
@@ -13,5 +13,9 @@
         top: 0;
         width: 100%;
         background: rgba(255, 255, 255, 0.8);
+
+        img {
+            width: 5rem;
+        }
     }
 }

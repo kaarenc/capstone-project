@@ -13,25 +13,23 @@
             max-height: 45rem;
             width: 100%;
           }
-
-          h1 {
-              text-align: center;
-              margin-top:3rem;
+ 
+          .info {
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background: rgba(255, 255, 255, 0.8);
+              width: 100vw;
+              padding-bottom: 1rem;
           }
 
-          @media screen and (min-width: 550px) {
-              h1 {
-                  position: absolute;
-                  bottom: 0;
-                  left: 50%;
-                  transform: translate(-50%, -50%);
-                  color: $dark_blue;
-                  background: rgba(255, 255, 255, 0.8);
-                  padding-bottom: 5rem;
-                  font-size: min(6vw, 4.5rem);
-                  width: 100vw;
-              }
-          }
+        h1 {
+            text-align: center;
+            color: $dark_blue;
+            font-size: min(8vw, 4.5rem);
+            margin: 0;
+        }
     }
 
     .home-intro {
@@ -40,10 +38,6 @@
     }
         
     .cta-buttons {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
         display: flex;
         justify-content: center;
 
@@ -65,12 +59,6 @@
             }
         }
     }
-
-    // @media screen and (min-width: 550px) {
-    //     .cta-buttons {
-    //         top: 85%;
-    //     }
-    // }
 
     .post-thumbnail {
 
