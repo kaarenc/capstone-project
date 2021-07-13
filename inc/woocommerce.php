@@ -444,6 +444,22 @@ remove_action( 'woocommerce_no_products_found', 'wc_no_products_found' );
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 30 );
 
+// add_theme_support( 'post-thumbnails' );
+
+// // Then we'll add our 2 custom images
+// add_image_size( 'large', 600, 600 );
+
+// // And then we'll add the custom size that spans the width of the blog to the Gutenberg image dropdown
+// add_filter( 'image_size_names_choose', 'wpmudev_custom_image_sizes' );
+
+// function wpmudev_custom_image_sizes( $sizes ) {
+//     return array_merge( $sizes, array(
+//         'large' => __( 'Large' ),
+//     ) );
+// }
+
+
+
 
 add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
 	global $product;

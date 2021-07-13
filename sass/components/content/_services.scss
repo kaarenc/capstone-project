@@ -26,6 +26,8 @@
                   img {
                       width: 100%;
                       height: 100%;
+                      object-fit: cover;
+                      min-height: 15rem;
                       
                     //   padding: 0 .5rem;
                     border-bottom: 3px $dark_blue solid;
@@ -175,15 +177,31 @@
 
 @media (min-width: $desktopWide) {
             .woocommerce-shop {
-                .products {
-                    .product {
+                .site-main{
+                     .products {
+                    li.product {
                         .contact-cta {
-                            right: 30%;
+                            right: 27%;
                         }
                         .add_to_cart_button {
-                            right: 10%;
+                            right: 7%;
                         }
                     }
                 }
+                }
+               
             }
+}
+
+@media (min-width: $megaDesktop) {
+    .woocommerce-shop {
+        .site-main {
+            .products {
+            li.product {
+                min-width: 60%;
+            }
+        }
+        }
+        
+    }
 }
