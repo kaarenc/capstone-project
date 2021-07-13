@@ -25,11 +25,13 @@ get_header();
 		<section class="landing">
 			<?php the_post_thumbnail(22); ?>
 
-			<h1>Positively Fit</h1>
+			<div class="info">
+				<h1>Positively Fit</h1>
 
-			<div class="cta-buttons"> 
-				<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(317) ); ?>">Shop</a></div>
-				<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(29) ); ?>">Contact</a></div>
+				<div class="cta-buttons"> 
+					<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(317) ); ?>">Shop</a></div>
+					<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(29) ); ?>">Contact</a></div>
+				</div>
 			</div>
 		</section>
 

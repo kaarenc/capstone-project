@@ -10,31 +10,31 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header>
+	<section class="page-header">
+		<?php
+		the_archive_title( '<h1 class="page-title">', '</h1>' );
+		the_archive_description( '<div class="archive-description">', '</div>' );
+		?>
+	</section>
 
-			<?php
+	<?php
 
-			$args = array(
-				'post_type' 		=> 'fit-staff',
-				'posts_per_page' 	=> -1,
-				'order_by'			=> 'title',
-				'order'				=> 'ASC'
-			);
+		$args = array(
+			'post_type' 		=> 'fit-staff',
+			'posts_per_page' 	=> -1,
+			'order_by'			=> 'title',
+			'order'				=> 'ASC'
+		);
 
-			$query = new WP_Query( $args );
+		$query = new WP_Query( $args );
 
-			if( $query -> have_posts() ) : ?>
+		if( $query -> have_posts() ) : ?>
 
 			<div class="all-staff">
 
-			<?php
+				<?php
 				while ( $query -> have_posts() ) :
 					$query -> the_post(); ?>
 
