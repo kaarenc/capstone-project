@@ -11,20 +11,37 @@
         img {
             object-fit: cover;
             max-height: 45rem;
+            width: 100%;
           }
 
           h1 {
               text-align: center;
+              margin-top:3rem;
+          }
+
+          @media screen and (min-width: 550px) {
+              h1 {
+                  position: absolute;
+                  bottom: 0;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  color: $dark_blue;
+                  background: rgba(255, 255, 255, 0.8);
+                  padding-bottom: 5rem;
+                  font-size: min(6vw, 4.5rem);
+                  width: 100vw;
+              }
           }
     }
 
     .home-intro {
         text-align: center;
+        padding: 0 1rem;
     }
         
     .cta-buttons {
         position: absolute;
-        top: 75%;
+        bottom: 0;
         left: 50%;
         transform: translate(-50%, -50%);
         display: flex;
@@ -32,13 +49,13 @@
 
         .button {
           width: min(5rem, 10rem);
-          display: flex;
-          justify-content: center;
+          display: block;
+          margin: 0.25rem;
 
           a {
               border: double $light_blue 2px;
               margin: 0 auto;
-              padding: .5rem;
+              padding: .25rem;
               text-align: center;
               text-decoration: none;
               color: $plain_white;
@@ -48,6 +65,12 @@
             }
         }
     }
+
+    // @media screen and (min-width: 550px) {
+    //     .cta-buttons {
+    //         top: 85%;
+    //     }
+    // }
 
     .post-thumbnail {
 
@@ -63,12 +86,14 @@
 
         .all-services {
             display: flex;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
+            max-width: 50rem;
+            margin: 0 auto;
         }
             
         article {
             border: $border;
-            width: min(100%, 25rem);
+            width: min(90%, 20rem);
             display: flex;
             flex-direction: column;
             padding: 1rem;
@@ -102,7 +127,7 @@
                 color: $color__text-main;
                 background-color: none;
                 margin: 1rem auto;
-                width: 15rem;
+                width: 10rem;
                 text-align: center;
                 box-shadow: 0px 0px 3px 0px #23232374;
             }     
@@ -159,5 +184,9 @@
                 box-shadow: 0px 0px 3px 0px #23232374;
             }   
         }
+    }
+
+    .testimonials {
+        margin-top: 3rem;
     }
 }

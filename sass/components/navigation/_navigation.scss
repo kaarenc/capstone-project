@@ -88,6 +88,11 @@
 .main-navigation ul.sub-menu{
 	display: none;
 }
+ 
+/* Highlight using link element */
+li.current-menu-item a{
+    text-decoration:underline;
+}
 
 @media screen and (min-width: 37.5em) {
 	.main-navigation {
