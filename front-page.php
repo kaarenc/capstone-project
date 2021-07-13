@@ -28,59 +28,9 @@ get_header();
 			<h1>Positively Fit</h1>
 
 			<div class="cta-buttons"> 
-				<?php
-				
-				if(function_exists('get_field')):
-					$button = get_field('call_to_action_shop');
-
-					if( $button ):?>
-
-						<div class="button">
-							<?php 
-							$link = get_field('call_to_action_shop');
-							if( $link ): 
-								$link_url = $link['url'];
-								$link_title = $link['title'];
-								$link_target = $link['target'] ? $link['target'] : '_self';
-								?>
-								<a class="button" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
-							<?php endif; ?>
-						</div>
-
-					<?php
-					endif;
-				endif;
-					
-					?>
-
-				
-
-					<?php 
-					if(function_exists('get_field')):
-
-						$button = get_field('call_to_action_contact');
-
-						if( $button ):?>
-
-							<div >
-								<?php 
-								$link = get_field('call_to_action_contact');
-								if( $link ): 
-									$link_url = $link['url'];
-									$link_title = $link['title'];
-									$link_target = $link['target'] ? $link['target'] : '_self';
-									?>
-									<a  href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">Shop Now</a>
-								<?php endif; ?>
-							</div>
-
-
-						<?php
-						endif;
-					endif;
-					
-					?>
-					</div>
+				<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(317) ); ?>">Shop</a></div>
+				<div class="button"><a class="button" href="<?php echo esc_url( get_permalink(29) ); ?>">Contact</a></div>
+			</div>
 		</section>
 
 		<section class="home-intro">
@@ -103,8 +53,9 @@ get_header();
 				
 					$featured_posts = get_field('featured_services');	
 					if( $featured_posts ): ?>
-						<h2>Featured Services</h2>
+						<h2>Our Services</h2>
 						
+						<div class="all-services">
 							<?php foreach( $featured_posts as $post ): ?>
 								<article>
 
@@ -119,11 +70,13 @@ get_header();
 
 									<?php 
 									the_excerpt();
-									
 									?>
+
+								<div class="cta-button"><a href="<?php echo esc_url( get_permalink() ); ?>">Shop Now</a></div>
 
 								</article>
 							<?php endforeach; ?>
+							</div>
 						
 						<?php 
 						wp_reset_postdata(); ?>
@@ -144,7 +97,7 @@ get_header();
 
 				if( $featured_posts ): ?>
 
-					<h2>Featured Blog Posts</h2>
+					<!-- <h2>Featured Blog Posts</h2> -->
 
 					<?php echo do_shortcode('[smartslider3 slider="2"]'); ?>
 							
@@ -164,7 +117,7 @@ get_header();
 
 					if( $featured_posts ): ?>
 
-					<h2>Team Members</h2>
+					<h2>Meet the Team</h2>
 
 					<div class="all-staff-members">
 						<?php foreach( $featured_posts as $post ): ?>
