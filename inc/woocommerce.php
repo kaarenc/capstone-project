@@ -304,9 +304,6 @@ if(get_field('service_description')) { ?>
 }
 }
 
-
-
-
 // -----------------------------------------------------------------------------
 // ADDING ELEMENTS AND CTA FIELDS TO INDIVIDUAL SERVICES PAGE
 // add CTA field
