@@ -3,74 +3,122 @@
     padding-top: 7rem;
   }
 }
-
-.woocommerce table.cart td:nth-of-type(5),
-.woocommerce table.cart th:nth-of-type(5) {
-  display: none;
+.wc-block-components-title {
+  text-align: center;
 }
-.woocommerce table.cart td:nth-of-type(6),
-.woocommerce table.cart th:nth-of-type(6) {
-  display: none;
+.is-medium.wc-block-components-sidebar-layout,
+.is-mobile.wc-block-components-sidebar-layout,
+.is-small.wc-block-components-sidebar-layout {
+  padding: 0 1rem;
 }
-td.product-name::before {
-  display: none;
-}
-.woocommerce table.cart tr:nth-of-type(2) {
-  display: none;
+.wc-block-components-sidebar-layout .wc-block-cart .is-large {
+  padding: 0 1rem;
 }
 
-.woocommerce-cart-form {
-  //   border: $border;
-  margin: 1rem;
-  max-width: 25rem;
-  margin: 0 auto;
-  table {
-    td.product-remove a {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-    }
+// .woocommerce table.cart td:nth-of-type(5),
+// .woocommerce table.cart th:nth-of-type(5) {
+//   display: none;
+// }
+// .woocommerce table.cart td:nth-of-type(6),
+// .woocommerce table.cart th:nth-of-type(6) {
+//   display: none;
+// }
+// td.product-name::before {
+//   display: none;
+// }
+// .woocommerce table.cart tr:nth-of-type(2) {
+//   display: none;
+// }
 
-    tr.woocommerce-cart-form__cart-item.cart_item {
-      position: relative;
-      border: $border;
-      margin: 1rem 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      gap: 20px 20px;
-      grid-auto-flow: row;
-      grid-template-areas:
-        "title"
-        "img"
-        "price";
+// .woocommerce-cart-form {
+//   //   border: $border;
+//   margin: 1rem;
+//   max-width: 25rem;
+//   margin: 0 auto;
+//   table {
+//     td.product-remove a {
+//       position: absolute;
+//       top: 5px;
+//       right: 5px;
+//     }
 
-      td.product-name {
-        grid-area: title;
-        // padding-top: 2.5rem;
-        justify-self: center;
-      }
+//     tr.woocommerce-cart-form__cart-item.cart_item {
+//       position: relative;
+//       border: $border;
+//       margin: 1rem 0;
+//       display: grid;
+//       grid-template-columns: 1fr;
+//       grid-template-rows: auto;
+//       gap: 20px 20px;
+//       grid-auto-flow: row;
+//       grid-template-areas:
+//         "title"
+//         "img"
+//         "price";
 
-      td.product-thumbnail {
-        grid-area: img;
-        justify-self: center;
-        img {
-          width: 13rem;
-        }
-      }
+//       td.product-name {
+//         grid-area: title;
+//         // padding-top: 2.5rem;
+//         justify-self: center;
+//       }
 
-      td.product-price {
-        grid-area: price;
-      }
-    }
-  }
-}
+//       td.product-thumbnail {
+//         grid-area: img;
+//         justify-self: center;
+//         img {
+//           width: 13rem;
+//         }
+//       }
 
-@media (min-width: $tablet) {
-  tr.woocommerce-cart-form__cart-item.cart_item {
-    display: block;
-  }
-}
+//       td.product-price {
+//         grid-area: price;
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: $tablet) {
+//   .woocommerce-cart-form {
+//     max-width: 50rem;
+//     table {
+//       td.product-remove a {
+//         position: relative;
+//       }
+//       tr.woocommerce-cart-form__cart-item.cart_item {
+//         display: grid;
+//         grid-template-columns: auto;
+//         grid-template-rows: auto;
+//         gap: 0px 0px;
+//         grid-auto-flow: row;
+//         grid-template-areas:
+//           "remove title priceTitle"
+//           "remove img price";
+//         th.product-name {
+//           display: none;
+//         }
+
+//         table {
+//           td.product-remove a {
+//             position: relative;
+//             grid-area: remove;
+//           }
+//         }
+
+//         td.product-name {
+//           grid-area: title;
+//         }
+//         td.product-thumbnail {
+//           width: 13rem;
+//           grid-area: img;
+//         }
+
+//         td.product-price {
+//           grid-area: price;
+//         }
+//       }
+//     }
+//   }
+// }
 
 // .product-thumbnail a img {
 //   position: absolute;
