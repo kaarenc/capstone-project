@@ -21,14 +21,24 @@ get_header();
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
-			?><div class="blog-title"> <?php
-				echo get_the_title(205)
-
-			?>
-			 </div>
-				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-			<?php
+				?>
+				<header>
+					
+				</header>
+				<?php
+				
+				
+			
 			endif;
+			
+			   ?> <div class="blog-title">
+					
+					<?php echo get_the_title(205) ?>
+
+				
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			
+				</div><?php
 
 			/* Start the Loop */
 			
