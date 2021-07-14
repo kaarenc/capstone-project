@@ -161,7 +161,7 @@
     .woocommerce-Reviews {
         max-width: 90%;
         text-align: center; 
-        
+
         
         p.woocommerce-noreviews {
         padding: 0;
@@ -378,6 +378,7 @@
 
 @media (min-width: $desktopExtraWide) {
     .product .entry-summary {
+        max-width: 80rem;
         .product_title {
             grid-column: 1/2;
         }
@@ -407,6 +408,7 @@
     }
 
        .woocommerce-Reviews {
+           max-width: 80rem;
         #comments {
             .commentlist {
               align-items: center;
