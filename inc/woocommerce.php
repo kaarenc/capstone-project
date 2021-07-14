@@ -360,7 +360,7 @@ if( $service_instructor ): ?>
 }
 
 // Add link to products archive page
-add_action( 'woocommerce_single_product_summary', 'link_to_services', 70 );
+
   
 function link_to_services() { ?>
 
@@ -372,7 +372,7 @@ $permalink = get_permalink( wc_get_page_id( 'shop' ));
 </div>
 <?php
 }
-
+add_action( 'woocommerce_single_product_summary', 'link_to_services', 70 );
 
 // --------------------------------------------
 
@@ -388,6 +388,9 @@ $permalink = get_permalink( wc_get_page_id( 'shop' ));
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 remove_action( 'woocommerce_no_products_found', 'wc_no_products_found' );
+
+// remove add to cart button
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 
 // Remove a tags around products
 // starting tag
@@ -418,16 +421,21 @@ function custom_woocommerce_page_title( $page_title ) {
 // Add Image
 add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 30 );
 
-// Update 'select options' button to 'shop now'.
-add_filter( 'woocommerce_product_add_to_cart_text', function( $text ) {
-	global $product;
-	if ( $product->is_type( 'variable' ) ) {
-		$button_text = 'Shop Now <span class="screen-reader-text">for <?php get_the_title(); ?></span>';
-		$text = $product->is_purchasable() ? __( $button_text, 'woocommerce' ) : __( 'Read more', 'woocommerce' );
-	}
-	return $text;
-}, 10 );
-
 // Add contact cta to shop page
-add_action( 'woocommerce_product_add_to_cart_text', 'custom_cta_field', 5 );
+add_action( 'woocommerce_after_shop_loop_item', 'custom_cta_field', 5 );
 
+// function add new shop now button with screen reader text
+
+function shop_now_button() { ?>
+
+	<?php 
+	$permalink = get_permalink(get_post());
+	?>
+
+	<a class="add_to_cart_button" href="<?php echo $permalink ?>">Shop Now <span class="screen-reader-text">for <?php the_title()?></span></a>
+	
+	<?php
+
+	}
+
+	add_action( 'woocommerce_after_shop_loop_item', 'shop_now_button', 10 );
