@@ -77,6 +77,7 @@
             width: min(90%, 20rem);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             padding: 1rem;
             margin: 2rem auto;
 
@@ -86,7 +87,7 @@
                 text-align: center;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
 
                 h3,
                 p {
@@ -101,7 +102,7 @@
                 } 
             }
                
-            .cta-button {
+            a.cta-button {
                 border: $dark_blue 3px double;
                 padding: .5rem;
                 text-decoration: none;

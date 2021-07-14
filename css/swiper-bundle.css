@@ -20,15 +20,17 @@
   --swiper-theme-color: #0093B8;
 }
 .swiper-container {
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
   position: relative;
   overflow: hidden;
   list-style: none;
   padding: 0;
   /* Fix of Webkit flickering */
   z-index: 1;
+}
+.home .testimonials .swiper-container {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .swiper-container-vertical > .swiper-wrapper {
   flex-direction: column;

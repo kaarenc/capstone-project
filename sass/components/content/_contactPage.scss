@@ -7,14 +7,9 @@
 }
 
 .post-29#post-29 {
-  position: relative;
-  .entry-header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.75rem;
-    // color: $dark_blue;
+  .entry-title {
+    text-align: center;
+    padding-top: 6rem;
   }
 }
 
@@ -43,16 +38,16 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container {
   border-radius: 5px;
 }
 
-.infoWrapper{
-  display:none;
+.infoWrapper {
+  display: none;
 }
 
-@media(min-width:600px){
-//styling for info wrapper in footer is in _footer.scss
+@media (min-width: 600px) {
+  //styling for info wrapper in footer is in _footer.scss
   .infoWrapper {
     display: flex;
     justify-content: space-between;
-    visibility:visible;
+    visibility: visible;
     max-width: 60rem;
     padding: 1rem;
     margin: 2rem auto;
@@ -66,5 +61,4 @@ div.wpforms-container-full .wpforms-form .wpforms-submit-container {
       }
     }
   }
-
 }

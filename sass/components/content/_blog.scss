@@ -65,7 +65,7 @@
    
     
 
-    .blog .post-76{
+    .blog article{
         
             display: grid; 
             grid-template-columns: 0.2fr 1.8fr 2fr 0.2fr; 
@@ -87,79 +87,6 @@
         padding-right:20px;        
        
     }
-
-    
-    .blog .post-66{
-        
-        display: grid; 
-        grid-template-columns: 0.1fr 1.8fr 2fr 0.1fr; 
-        grid-template-rows: 0.2fr 0.5fr 0.5fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          ". entry-header entry-header"
-          ". post-thumbnail entry-content";
-          
-      
-      .entry-header { grid-area: entry-header; }
-      .post-thumbnail { grid-area: post-thumbnail; }
-      .entry-content { grid-area: entry-content; }
-  
-  
-     }
-
-     .blog .post-58{
-        
-        display: grid; 
-        grid-template-columns: 0.1fr 1.8fr 2fr 0.1fr; 
-        grid-template-rows: 0.2fr 0.5fr 0.5fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          ". entry-header entry-header"
-          ". post-thumbnail entry-content";
-          
-      
-      .entry-header { grid-area: entry-header; }
-      .post-thumbnail { grid-area: post-thumbnail; }
-      .entry-content { grid-area: entry-content; }
-  
-  
-     }
-
-     .blog .post-54{
-        
-        display: grid; 
-        grid-template-columns: 0.1fr 1.8fr 2fr 0.1fr; 
-        grid-template-rows: 0.2fr 0.5fr 0.5fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          ". entry-header entry-header"
-          ". post-thumbnail entry-content";
-          
-      
-      .entry-header { grid-area: entry-header; }
-      .post-thumbnail { grid-area: post-thumbnail; }
-      .entry-content { grid-area: entry-content; }
-  
-  
-     }
-
-     .blog .post-50{
-        
-        display: grid; 
-        grid-template-columns: 0.1fr 1.8fr 2fr 0.1fr; 
-        grid-template-rows: 0.2fr 0.5fr 0.5fr; 
-        gap: 0px 0px; 
-        grid-template-areas: 
-          ". entry-header entry-header"
-          ". post-thumbnail entry-content";
-          
-      
-      .entry-header { grid-area: entry-header; }
-      .post-thumbnail { grid-area: post-thumbnail; }
-      .entry-content { grid-area: entry-content; }
-  
-  
-     }
 
 
      .blog .entry-title a{

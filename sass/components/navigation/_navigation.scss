@@ -49,7 +49,7 @@
 
   li {
     position: relative;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     text-align: center;
 
     &:hover {
@@ -90,7 +90,7 @@
 }
 
 /* Highlight using link element */
-li.current-menu-item a {
+li.current-menu-item > a {
   text-decoration: underline;
 }
 
@@ -111,9 +111,9 @@ li.current-menu-item a {
 	.main-navigation ul {
 		display: flex;
 		justify-content: flex-end;
-		position: absolute;
-		padding-right: 1rem;
-		bottom: 20px;
+		position: relative;
+    padding-top: 1.25rem;
+    z-index: 1;
 
 		ul.sub-menu {
 			display: block;
@@ -121,7 +121,6 @@ li.current-menu-item a {
 			position: absolute;
 			top: 100%;
 			left: -999em;
-			z-index: 99999;
 			
 			ul {
 				left: -999em;
@@ -129,21 +128,30 @@ li.current-menu-item a {
 			}
 
 			li {
-				background: $dark_blue;
+				background: $light_blue;
 
 				&:hover > ul,
 				&.focus > ul {
 					display: block;
 					left: auto;
-					background: $light_blue;
+					background: black;
+
+          a {
+            color: white;
+            font-size: 1.25rem;
+          }
 				}
 			}
 
 			a {
 				width: 200px;
 				padding: 0.5rem;
-				background: $dark_blue;
+				background: $light_blue;
 				color: white;
+
+        path {
+          fill: white;
+        }
 
 				&:hover {
 					background: $light_blue;

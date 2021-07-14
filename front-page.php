@@ -74,7 +74,7 @@ get_header();
 									the_excerpt();
 									?>
 
-								<div class="cta-button"><a href="<?php echo esc_url( get_permalink() ); ?>">Shop Now</a></div>
+								<a class="cta-button" href="<?php echo esc_url( get_permalink() ); ?>">Shop Now<span class="screen-reader-text">for <?php get_the_title(); ?></span></a>
 
 								</article>
 							<?php endforeach; ?>

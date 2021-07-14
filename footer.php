@@ -63,21 +63,7 @@
 	  
  
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'fwd-fitness' ) ); ?>">
-				<?php
-
-				
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'fwd-fitness' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'fwd-fitness' ), 'fwd-fitness', '<a href="https://fitness.bcitwebdeveloper.ca">FWD27</a>' );
-				?>
-
-
+			<p>Website designed and developed by <a href="https://www.evanteichman.com/">Evan Teichman</a>, <a href="https://hunterpaulson.com/">Hunter Paulson</a>, <a href="https://kaarencorrigan.com/">Kaaren Corrigan</a> and <a href="https://ainsleymarsh.ca/">Ainsley Marsh</a>.</p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
