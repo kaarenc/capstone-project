@@ -1,4 +1,25 @@
 .post-20 {
   padding-top: 6rem;
-  text-align: center;
+  .entry-title {
+    text-align: center;
+  }
+  .woocommerce {
+    border: $border;
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 30rem;
+    h2 {
+      padding-left: 1rem;
+    }
+    .woocommerce-form.woocommerce-form-login.login {
+      p.woocommerce-form-row.woocommerce-form-row--wide.form-row.form-row-wide {
+        display: flex;
+        flex-direction: column;
+        .woocommerce-Input.woocommerce-Input--text.input-text {
+          width: 100%;
+        }
+      }
+      padding: 0 1rem;
+    }
+  }
 }
