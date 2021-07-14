@@ -21,14 +21,13 @@ get_header();
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					
-				</header>
-				<?php
-				
-				
 			
+				echo "<h1 class='page-title'>".get_the_title(205)."</h1>";
+
+			?>
+			 
+				<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+			<?php
 			endif;
 			
 			   ?> <div class="blog-title">
