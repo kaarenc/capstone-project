@@ -32,6 +32,20 @@
   margin-left: 10%;
   margin-right: 10%;
 }
+@media screen and (min-width: 900px) {
+  .home .testimonials .swiper-container {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .home .testimonials .swiper-container {
+    width: 35%;
+    margin-left: 32.5%;
+    margin-right: 32.5%;
+  }
+}
 .swiper-container-vertical > .swiper-wrapper {
   flex-direction: column;
 }

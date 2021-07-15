@@ -142,11 +142,14 @@
             lat: parseFloat( lat ),
             lng: parseFloat( lng )
         };
-    
-        // Create marker instance.
-        var marker = new google.maps.Marker({
-            position : latLng,
-            map: map
+
+        //New png for marker, blue color
+        let marker = new google.maps.Marker({
+            map: map,
+            position: latLng,
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            }
         });
     
         // Append to reference for later use.
