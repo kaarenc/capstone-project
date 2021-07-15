@@ -277,6 +277,9 @@ remove_action( 'woocommerce_review_before', 'woocommerce_review_display_gravatar
 // Remove related products 
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+// remove rating
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+
 // Remove Sidebar
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
@@ -401,6 +404,9 @@ remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_pro
 
 // Remove image
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
+
+// remove product rating
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
 // Add short description field 
 function excerpt_in_product_archives() {
