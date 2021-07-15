@@ -26,6 +26,8 @@
     .home-intro {
         text-align: center;
         padding: 0 1rem;
+        max-width: 50rem;
+        margin: 0 auto;
     }
         
     .cta-buttons {
@@ -120,6 +122,15 @@
         }
     }
 
+    @media screen and (min-width: 1800px ){
+        .featured-services {
+    
+            .all-services {
+                max-width: 100rem;
+            }
+        }
+    }
+
 
     .team-members {
 
@@ -128,6 +139,8 @@
         .all-staff-members {
             display: flex;
             flex-wrap: wrap;
+            max-width: 80rem;
+            margin: 0 auto;
         } 
 
         article {
