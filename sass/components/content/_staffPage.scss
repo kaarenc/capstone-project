@@ -8,6 +8,8 @@
     .all-staff {
         display: flex;
         flex-wrap: wrap;
+        max-width: 90rem;
+        margin: 0 auto;
     }
 
     article {
