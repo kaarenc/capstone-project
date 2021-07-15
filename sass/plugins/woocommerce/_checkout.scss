@@ -19,6 +19,18 @@
   display: none;
 }
 
+.wc-block-components-notices__notice.woocommerce-message.woocommerce-error.components-notice.is-error.is-dismissible {
+  position: fixed;
+  width: 100%;
+  z-index: 98;
+  bottom: 0;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  color: white;
+  padding: 1rem;
+}
+
 @media screen and (min-width: 768px) {
   .col2-set {
     .form-row-first {
