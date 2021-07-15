@@ -28,13 +28,15 @@
 					
 			}
 			
-			if ( get_field( 'email_address', 29 ) ) {
+			
+			if ( get_field( 'email_address', 29 ) ) { 
+				?>
 				
-					echo '<p>';
-						the_field('email_address', 29);	
-					echo '</p>';
+					<a href="mailto:<?php the_field( 'email_address', 29 ); ?>">
+						<?php the_field( 'email_address', 29 ); ?>
+					</a>
 				
-				
+				<?php
 			}
 
 		echo '</div>';

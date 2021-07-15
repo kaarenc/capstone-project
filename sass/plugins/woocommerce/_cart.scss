@@ -41,12 +41,15 @@
   margin: 0;
   overflow: hidden;
   padding: 0;
+  color: black;
   a {
+    color: black;
     z-index: 100000;
     &:hover {
       cursor: pointer;
     }
   }
+
   ul.woocommerce-error {
     // display: none;
     margin: 0;
