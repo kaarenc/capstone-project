@@ -1,9 +1,13 @@
+.entry-content {
+  padding: 0 1rem;
+}
 .woocommerce-order {
   border: $border;
-  margin: 0 1rem;
+  margin: 0 auto;
   max-width: 55rem;
   .woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received {
-    text-align: center;
+    text-align: left;
+    padding-left: 3rem;
   }
   ul {
     //come back to this
@@ -21,8 +25,11 @@
       text-align: left;
     }
     .woocommerce-table.woocommerce-table--order-details.shop_table.order_details,
-    .woocommerce-table .woocommerce-table--order-downloads .shop_table .shop_table_responsive .order_details {
-
+    .woocommerce-table
+      .woocommerce-table--order-downloads
+      .shop_table
+      .shop_table_responsive
+      .order_details {
       td,
       th {
         text-align: left;
@@ -41,7 +48,12 @@
       text-align: center;
     }
   }
+
   @media (min-width: $desktop) {
-    margin: 0 auto;
+    .woocommerce-order {
+      .woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received {
+        text-align: center;
+      }
+    }
   }
 }
