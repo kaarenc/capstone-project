@@ -5,8 +5,9 @@
   // max-width: 40rem;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 0.5fr;
-  gap: 0px 0px;
+  // grid-template-rows: 1fr 1fr 0.5fr;
+  grid-template-rows: auto;
+  gap: 10px 0px;
   grid-auto-flow: row;
   grid-template-areas:
     "contactInfo siteMap"
@@ -15,9 +16,10 @@
 
   .infoWrapperFooter {
     grid-area: contactInfo;
-    align-self: center;
+    align-self: flex-start;
     padding-left: 1.5rem;
-    p {
+    p,
+    a {
       margin: 0;
       padding: 0.5rem 0;
       font-size: 1.15rem;
@@ -27,7 +29,8 @@
 
   #footer-navigation {
     grid-area: siteMap;
-    align-self: center;
+    align-self: flex-start;
+    padding-top: 0.5rem;
     // text-align: right;
   }
 
@@ -45,13 +48,13 @@
   }
 }
 
-#menu-footer-menu {
-  align-content: flex-end;
-  li {
-    padding-left: 1.5rem;
-    font-size: 1rem;
-  }
-}
+// #menu-footer-menu {
+//   align-content: flex-end;
+//   li {
+//     padding-left: 1.5rem;
+//     font-size: 1rem;
+//   }
+// }
 
 // #menu-item-291,
 // #menu-item-290 {
@@ -60,13 +63,17 @@
 
 #menu-footer-menu {
   list-style: none;
-  padding: 0;
+  padding-right: 1rem;
   margin: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 7rem;
-  padding-right: 5px;
+  height: 8rem;
+  align-content: flex-end;
+  li {
+    padding-left: 1.5rem;
+    font-size: 1rem;
+  }
 }
 
 //styling for map in footer
@@ -77,13 +84,20 @@
   margin: 0 auto;
 }
 
-@media (min-width: $tabletWide) {
+@media (min-width: $tablet) {
   .site-footer {
     max-width: 50rem;
     .infoWrapperFooter {
-      padding-left: 0;
+      padding-left: 5rem;
     }
   }
+
+  #menu-footer-menu {
+    padding-right: 5rem;
+  }
+}
+
+@media (min-width: $tabletWide) {
   .acf-map.acf-map-footer {
     width: 100%;
     height: 300px;
