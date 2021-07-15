@@ -367,7 +367,16 @@ function wpse_46445_add_widget_content()
             'id'=>'HIq9kkHbMCA', 
             'color'=>'#0093B8', 
             'title' => 'Adding a Blog Post', 
-            'button' => 'View Now'
+            'button' => 'View Video'
+        )
+    );
+
+	$tutorial_3 = wpse_46445_make_youtube_thumb_link3(
+        array(
+            'id'=>'HIq9kkHbMCA', 
+            'color'=>'#0093B8', 
+            'title' => 'Adding a Product', 
+            'button' => 'View Video'
         )
     );
     $html = <<<HTML
@@ -376,6 +385,9 @@ function wpse_46445_add_widget_content()
     <hr />
     <h4 style="text-align:center">How to add a blog post to your Positively Fit website</h4>
     {$tutorial_2}
+	<hr />
+    <h4 style="text-align:center">How to add a product to you Positively Fit website</h4>
+    {$tutorial_3}
 HTML;
     echo $html;
 }
@@ -402,6 +414,20 @@ function wpse_46445_make_youtube_thumb($atts, $content = null)
 {
     $img   = "http://i3.ytimg.com/vi/{$atts['id']}/default.jpg";
     $yt    = "https://share.vidyard.com/watch/QRBoCNAUFAvzsVZ8fVGnhj?{$atts['id']}";
+    $color = ($atts['color'] && $atts['color'] != '') ? ';color:' . $atts['color'] : '';
+    $html  = <<<HTML
+        <div class="poptube" style="text-align:center;margin-bottom:40px">
+        <h2 class="poptube" style="text-shadow:none;padding:0px{$color}">{$atts['title']}</h2>
+        <a href="{$yt}" target="_blank"><img class="poptube" src="{$img}" style="margin-bottom:-19px"/></a><br />
+        <a class="poptube button-secondary" href="{$yt}" target="_blank">{$atts['button']}</a></div>
+HTML;
+    return $html;
+}
+
+function wpse_46445_make_youtube_thumb_link3($atts, $content = null) 
+{
+    $img   = "http://i3.ytimg.com/vi/{$atts['id']}/default.jpg";
+    $yt    = "https://share.vidyard.com/watch/j8ccW21CSnsKouGTgiKyev?{$atts['id']}";
     $color = ($atts['color'] && $atts['color'] != '') ? ';color:' . $atts['color'] : '';
     $html  = <<<HTML
         <div class="poptube" style="text-align:center;margin-bottom:40px">
