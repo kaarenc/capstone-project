@@ -47,12 +47,17 @@
     display:none;
 }
 
-.blog .wp-post-image{
-    width: 100%;
-    height:300px;   
+.blog .post-thumbnail {
+width: 100%;
+    height:300px ; 
+
+
+.wp-post-image{
+     
+    object-position: cover;
    
 }
-
+}
 
 .blog article{
     background-color:#f8f8f8;
@@ -100,12 +105,14 @@
           .entry-content { grid-area: entry-content; }
       
          }
-      .blog .wp-post-image{
-        padding-right:20px; 
+      .blog .post-thumbnail {
+           padding-right:20px; 
         max-width:  514px; 
-        max-height: 290px;     
-       
-    }
+        max-height: 290px;    
+         
+      }
+      
+      
 
 
      .blog .entry-title a{
